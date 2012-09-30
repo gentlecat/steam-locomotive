@@ -39,4 +39,13 @@ class WebAPI {
         return $json->friendslist->friends;
     }
 
+    public function ResolveVanityURL($vanityurl) {
+        $url = 'http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key='.STEAM_API_KEY.'&vanityurl='.$vanityurl;
+        $contents = @file_get_contents($url);
+        if ($contents === FALSE) return FALSE;
+        $json = json_decode($contents);
+        if ($json->response->success == '1') return $json->response->steamid;
+        return NULL; // Profile was not found
+    }
+
 }
