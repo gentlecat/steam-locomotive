@@ -14,7 +14,7 @@ class UserTools
         if (self::validateUserId($community_id, TYPE_COMMUNITY_ID) !== TRUE) {
             throw new WrongIDException($community_id);
         }
-        require_once LIB_PATH . 'libs/simple_html_dom.php';
+        require_once LOCOMOTIVE_PATH . 'libs/simple_html_dom.php';
         $url = 'http://steamcommunity.com/profiles/' . $community_id;
         $profile_page_html = file_get_html($url);
         $badges_html = '';
@@ -67,14 +67,15 @@ class UserTools
     {
         switch ($expected_type) {
             case TYPE_COMMUNITY_ID:
-                if (ctype_digit($id) && (strlen($id) == 17))
-                    return TRUE;
+                if (ctype_digit($id) && (strlen($id) == 17)) return TRUE;
+                else return FALSE;
             case TYPE_STEAM_ID:
-                if (preg_match('/((?i:STEAM)_)?0:[0-9]:[0-9]*/', $id))
-                    return TRUE;
+                if (preg_match('/((?i:STEAM)_)?0:[0-9]:[0-9]*/', $id)) return TRUE;
+                else return FALSE;
             case TYPE_VANITY:
                 // TODO: Validate
-                return TRUE;
+                if (TRUE) return TRUE;
+                else return FALSE;
             default:
                 return FALSE;
         }

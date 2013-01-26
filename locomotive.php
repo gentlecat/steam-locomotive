@@ -1,14 +1,14 @@
 <?php
 
-define('LIB_PATH', dirname(__FILE__) . '/');
+define('LOCOMOTIVE_PATH', dirname(__FILE__) . '/');
 
-require LIB_PATH . 'config.php';
-require LIB_PATH . 'exceptions.php';
+require LOCOMOTIVE_PATH . 'config.php';
+require LOCOMOTIVE_PATH . 'exceptions.php';
 
 // Modules
-require LIB_PATH . 'modules/webapi.php';
-require LIB_PATH . 'modules/communityapi.php';
-require LIB_PATH . 'modules/tools.php';
+require LOCOMOTIVE_PATH . 'modules/webapi.php';
+require LOCOMOTIVE_PATH . 'modules/communityapi.php';
+require LOCOMOTIVE_PATH . 'modules/tools.php';
 
 // Types
 define('TYPE_STEAM_ID', 'steamid');

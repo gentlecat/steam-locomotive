@@ -1,11 +1,51 @@
 <?php
 
+define('DOTA_SKILL_ANY', 0);
+define('DOTA_SKILL_NORMAL', 1);
+define('DOTA_SKILL_HIGH', 2);
+define('DOTA_SKILL_VERY_HIGH', 3);
+
 class WebAPI
 {
 
     function __construct()
     {
         $this->tools = new Tools();
+    }
+
+    public function GetAppList()
+    {
+        $url = "http://api.steampowered.com/ISteamApps/GetAppList/v2";
+    }
+
+    public function GetAssetClassInfo($appid, $language, $classidN, $class_count)
+    {
+        $url = "http://api.steampowered.com/ISteamEconomy/GetAssetClassInfo/v0001/";
+    }
+
+    public function GetAssetPrices($appid, $language, $currency)
+    {
+
+    }
+
+    public function GetGlobalAchievementPercentagesForApp()
+    {
+        $url = "http://api.steampowered.com/ISteamUserStats/GetGlobalAchievementPercentagesForApp/v0002";
+    }
+
+    public function GetNewsForApp($appid, $count, $maxlength)
+    {
+        $url = "http://api.steampowered.com/ISteamNews/GetNewsForApp/v0002";
+    }
+
+    public function GetPlayerAchievements($steamid, $appid, $l = '')
+    {
+        $url = "http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1";
+    }
+
+    public function GetPlayerItems($steamid, $appid)
+    {
+        $url = "http://api.steampowered.com/IEconItems_$appid/GetPlayerItems/v0001/";
     }
 
     public function GetPlayerSummaries($steamids)
@@ -27,7 +67,8 @@ class WebAPI
         return $result;
     }
 
-    public function GetPlayerBans($steamids) {
+    public function GetPlayerBans($steamids)
+    {
         foreach ($steamids as $id) {
             if ($this->tools->users->validateUserId($id, TYPE_COMMUNITY_ID) == FALSE)
                 throw new WrongIDException();
@@ -55,7 +96,7 @@ class WebAPI
         if ($contents === FALSE) {
             switch ($http_response_header[0]) {
                 case "HTTP/1.1 401 Unauthorized":
-                    throw new PrivateProfileException();
+                    throw new UnauthorizedException();
                     break;
                 default:
                     throw new SteamAPIUnavailableException($contents);
@@ -65,7 +106,77 @@ class WebAPI
         return $json->friendslist->friends;
     }
 
-    public function ResolveVanityURL($vanityurl)
+    public function GetMatchHistory($matches_requested = NULL,
+                                    $start_at_match_id = NULL,
+                                    $account_id = NULL,
+                                    $date_max = NULL,
+                                    $date_min = NULL,
+                                    $skill = NULL,
+                                    $hero_id = NULL,
+                                    $league_id = NULL,
+                                    $player_name = NULL)
+    {
+        $url = 'https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/V001/?key=' . STEAM_API_KEY;
+        if (!empty($matches_requested)) $url = $url . '&matches_requested=' . $matches_requested;
+        if (!empty($start_at_match_id)) $url = $url . '&start_at_match_id=' . $start_at_match_id;
+        if (!empty($account_id)) $url = $url . '&account_id=' . $account_id;
+        if (!empty($date_max)) $url = $url . '&date_max=' . $date_max;
+        if (!empty($date_min)) $url = $url . '&date_min=' . $date_min;
+        if (!empty($skill)) $url = $url . '&skill=' . $skill;
+        if (!empty($hero_id)) $url = $url . '&hero_id=' . $hero_id;
+        if (!empty($league_id)) $url = $url . '&league_id=' . $league_id;
+        if (!empty($player_name)) $url = $url . '&player_name=' . $player_name;
+
+        $contents = @file_get_contents($url);
+        if ($contents === FALSE) {
+            switch ($http_response_header[0]) {
+                case "HTTP/1.1 401 Unauthorized":
+                    throw new UnauthorizedException();
+                    break;
+                default:
+                    throw new SteamAPIUnavailableException($contents);
+            }
+        }
+        $json = json_decode($contents);
+        return $json;
+    }
+
+    public function GetMatchDetails($match_id)
+    {
+        $url = 'https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?key=' . STEAM_API_KEY . '&match_id=' . $match_id;
+        $contents = @file_get_contents($url);
+        if ($contents === FALSE) {
+            switch ($http_response_header[0]) {
+                case "HTTP/1.1 401 Unauthorized":
+                    throw new UnauthorizedException();
+                    break;
+                default:
+                    throw new SteamAPIUnavailableException($contents);
+            }
+        }
+        $json = json_decode($contents);
+        return $json->result;
+    }
+
+    public function GetHeroes()
+    {
+        $url = 'https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=' . STEAM_API_KEY;
+        $contents = @file_get_contents($url);
+        if ($contents === FALSE) {
+            switch ($http_response_header[0]) {
+                case "HTTP/1.1 401 Unauthorized":
+                    throw new UnauthorizedException();
+                    break;
+                default:
+                    throw new SteamAPIUnavailableException($contents);
+            }
+        }
+        $json = json_decode($contents);
+        return $json->result->heroes;
+    }
+
+    public
+    function ResolveVanityURL($vanityurl)
     {
         $url = 'https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key='
             . STEAM_API_KEY . '&vanityurl=' . $vanityurl;

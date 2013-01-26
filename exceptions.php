@@ -2,6 +2,6 @@
 
 class SteamAPIUnavailableException extends Exception {}
 
-class PrivateProfileException extends Exception {}
+class UnauthorizedException extends Exception {}
 
 class WrongIDException extends Exception {}
