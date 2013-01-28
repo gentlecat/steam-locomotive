@@ -13,6 +13,18 @@ class WebAPI
         $this->tools = new Tools();
     }
 
+    private function getContent($url)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
+            $result = FALSE;
+        }
+        curl_close($ch);
+        return $result;
+    }
+
     public function GetAppList()
     {
         $url = "http://api.steampowered.com/ISteamApps/GetAppList/v2";
@@ -59,7 +71,7 @@ class WebAPI
         $result = array();
         foreach (array_chunk($steamids, 100) as $chunk) {
             $string = implode(",", $chunk);
-            $contents = @file_get_contents($url . $string);
+            $contents = self::getContent($url . $string);
             if ($contents === FALSE) throw new SteamAPIUnavailableException();
             $json = json_decode($contents);
             $result = array_merge($result, $json->response->players);
@@ -78,7 +90,7 @@ class WebAPI
         $result = array();
         foreach (array_chunk($steamids, 100) as $chunk) {
             $string = implode(",", $chunk);
-            $contents = @file_get_contents($url . $string);
+            $contents = self::getContent($url . $string);
             if ($contents === FALSE) throw new SteamAPIUnavailableException();
             $json = json_decode($contents);
             $result = array_merge($result, $json->players);
@@ -92,7 +104,7 @@ class WebAPI
             throw new WrongIDException();
         $url = 'https://api.steampowered.com/ISteamUser/GetFriendList/v0001/?key='
             . STEAM_API_KEY . '&steamid=' . $steamid;
-        $contents = @file_get_contents($url);
+        $contents = self::getContent($url);
         if ($contents === FALSE) {
             switch ($http_response_header[0]) {
                 case "HTTP/1.1 401 Unauthorized":
@@ -127,7 +139,7 @@ class WebAPI
         if (!empty($league_id)) $url = $url . '&league_id=' . $league_id;
         if (!empty($player_name)) $url = $url . '&player_name=' . $player_name;
 
-        $contents = @file_get_contents($url);
+        $contents = self::getContent($url);
         if ($contents === FALSE) {
             switch ($http_response_header[0]) {
                 case "HTTP/1.1 401 Unauthorized":
@@ -143,8 +155,8 @@ class WebAPI
 
     public function GetMatchDetails($match_id)
     {
-        $url = 'https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?key=' . STEAM_API_KEY . '&match_id=' . $match_id;
-        $contents = @file_get_contents($url);
+        $contents = self::getContent('https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/V001/?key='
+            . STEAM_API_KEY . '&match_id=' . $match_id);
         if ($contents === FALSE) {
             switch ($http_response_header[0]) {
                 case "HTTP/1.1 401 Unauthorized":
@@ -160,8 +172,7 @@ class WebAPI
 
     public function GetHeroes()
     {
-        $url = 'https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=' . STEAM_API_KEY;
-        $contents = @file_get_contents($url);
+        $contents = self::getContent('https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=' . STEAM_API_KEY);
         if ($contents === FALSE) {
             switch ($http_response_header[0]) {
                 case "HTTP/1.1 401 Unauthorized":
@@ -178,9 +189,8 @@ class WebAPI
     public
     function ResolveVanityURL($vanityurl)
     {
-        $url = 'https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key='
-            . STEAM_API_KEY . '&vanityurl=' . $vanityurl;
-        $contents = @file_get_contents($url);
+        $contents = self::getContent('https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key='
+            . STEAM_API_KEY . '&vanityurl=' . $vanityurl);
         if ($contents === FALSE) return FALSE;
         $json = json_decode($contents);
         if ($json->response->success == '1') return $json->response->steamid;

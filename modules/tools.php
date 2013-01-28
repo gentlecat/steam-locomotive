@@ -16,6 +16,8 @@ class Tools
         $this->groups = new GroupTools();
         require_once LOCOMOTIVE_TOOLS_PATH . 'apptools.php';
         $this->apps = new AppTools();
+        require_once LOCOMOTIVE_TOOLS_PATH . 'dotatools.php';
+        $this->dota = new DotaTools();
     }
 
 }

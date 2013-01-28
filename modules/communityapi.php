@@ -12,12 +12,23 @@ class CommunityAPI
         $this->tools = new Tools();
     }
 
+    private function getContent($url)
+    {
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
+            $result = FALSE;
+        }
+        curl_close($ch);
+        return $result;
+    }
+
     public function getAppsForUser($community_id)
     {
         if ($this->tools->users->validateUserId($community_id, TYPE_COMMUNITY_ID) == FALSE)
             throw new WrongIDException();
-        $url = 'https://steamcommunity.com/profiles/' . $community_id . '/games?tab=all&xml=1';
-        $contents = @file_get_contents($url);
+        $contents = self::getContent('http://steamcommunity.com/profiles/' . $community_id . '/games?tab=all&xml=1');
         if ($contents === FALSE) {
             throw new SteamAPIUnavailableException();
         } else {
@@ -41,19 +52,19 @@ class CommunityAPI
     {
         if ($this->tools->groups->validateGroupId($group_id) == FALSE)
             throw new WrongIDException();
-        $url = 'https://steamcommunity.com/gid/' . $group_id . '/memberslistxml/?xml=1';
+        $url = 'http://steamcommunity.com/gid/' . $group_id . '/memberslistxml/?xml=1';
         return self::getGroupInfo($url);
     }
 
     public function getGroupInfoByName($group_name)
     {
-        $url = 'https://steamcommunity.com/groups/' . $group_name . '/memberslistxml/?xml=1';
+        $url = 'http://steamcommunity.com/groups/' . $group_name . '/memberslistxml/?xml=1';
         return self::getGroupInfo($url);
     }
 
     private function getGroupInfo($url)
     {
-        $contents = @file_get_contents($url);
+        $contents = self::getContent($url);
         if ($contents === FALSE) {
             throw new SteamAPIUnavailableException();
         } else {
