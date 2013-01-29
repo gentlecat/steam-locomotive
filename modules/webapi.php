@@ -5,6 +5,8 @@ define('DOTA_SKILL_NORMAL', 1);
 define('DOTA_SKILL_HIGH', 2);
 define('DOTA_SKILL_VERY_HIGH', 3);
 
+define('DOTA_APPID', 570);
+
 class WebAPI
 {
 
@@ -186,8 +188,7 @@ class WebAPI
         return $json->result->heroes;
     }
 
-    public
-    function ResolveVanityURL($vanityurl)
+    public function ResolveVanityURL($vanityurl)
     {
         $contents = self::getContent('https://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key='
             . STEAM_API_KEY . '&vanityurl=' . $vanityurl);
@@ -195,6 +196,16 @@ class WebAPI
         $json = json_decode($contents);
         if ($json->response->success == '1') return $json->response->steamid;
         return NULL; // Profile not found
+    }
+
+    public function GetUGCFileDetails($appid, $ugcid)
+    {
+        $url = 'https://api.steampowered.com/ISteamRemoteStorage/GetUGCFileDetails/v1/?key=' .
+            STEAM_API_KEY . '&appid=' . $appid . '&ugcid=' . $ugcid;
+        $contents = self::getContent($url);
+        if ($contents === FALSE) return FALSE;
+        $json = json_decode($contents);
+        return $json->data;
     }
 
 }
