@@ -14,7 +14,6 @@ class UserTools
         if (self::validateUserId($community_id, TYPE_COMMUNITY_ID) !== TRUE) {
             throw new WrongIDException($community_id);
         }
-        require_once LOCOMOTIVE_PATH . 'libs/simple_html_dom.php';
         $url = 'http://steamcommunity.com/profiles/' . $community_id;
         $profile_page_html = file_get_html($url);
         $badges_html = '';
