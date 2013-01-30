@@ -19,7 +19,7 @@ class GroupTools
      * @param string $expected_type Expected type of Group ID
      * @return bool TRUE if valid, FALSE if not
      */
-    public function validateGroupId($id, $expected_type = TYPE_COMMUNITY_ID)
+    public function validateGroupId($id, $expected_type)
     {
         switch ($expected_type) {
             case TYPE_COMMUNITY_ID:

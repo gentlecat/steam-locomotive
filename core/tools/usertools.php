@@ -90,10 +90,6 @@ class UserTools
      */
     public function communityIdToSteamId($community_id, $is_short = FALSE)
     {
-        if (self::validateUserId($community_id, TYPE_COMMUNITY_ID) !== TRUE) {
-            throw new WrongIDException($community_id);
-        }
-        // TODO: Use BCMath maybe
         $temp = intval($community_id) - 76561197960265728;
         $odd_id = $temp % 2;
         $temp = floor($temp / 2);
@@ -106,14 +102,13 @@ class UserTools
 
     /**
      * Converts Steam ID to Community ID
+     * Example input: STEAM_0:0:17336203 or 0:0:17336203
      * @param $steam_id Full or short Steam ID
      * @return string Community ID
      * @throws WrongIDException
      */
     public function steamIdToCommunityId($steam_id)
     {
-        // Example input: STEAM_0:0:17336203 or 0:0:17336203
-        // TODO: Use BCMath maybe
         $x = NULL;
         if (preg_match('/(?i:STEAM)_0:[0-9]:[0-9]*/', $steam_id)) {
             $x = substr($steam_id, 8, 1);

@@ -24,7 +24,7 @@ class CommunityAPI
         return $result;
     }
 
-    public function getAppsForUser($community_id)
+    public function getOwnedApps($community_id)
     {
         if ($this->tools->users->validateUserId($community_id, TYPE_COMMUNITY_ID) == FALSE)
             throw new WrongIDException();
@@ -50,8 +50,6 @@ class CommunityAPI
 
     public function getGroupInfoById($group_id)
     {
-        if ($this->tools->groups->validateGroupId($group_id) == FALSE)
-            throw new WrongIDException();
         $url = 'http://steamcommunity.com/gid/' . $group_id . '/memberslistxml/?xml=1';
         return self::getGroupInfo($url);
     }
