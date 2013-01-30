@@ -20,7 +20,6 @@ class API_Interface
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $result = curl_exec($ch);
         if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
-            var_dump(curl_getinfo($ch, CURLINFO_HTTP_CODE));
             $result = FALSE;
         }
         curl_close($ch);

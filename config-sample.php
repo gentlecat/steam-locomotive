@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Steam API key
  * https://steamcommunity.com/dev/apikey
  */
