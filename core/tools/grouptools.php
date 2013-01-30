@@ -9,8 +9,8 @@ class GroupTools
      */
     public function getTypeOfId($id)
     {
-        if (self::validateGroupId($id, TYPE_COMMUNITY_ID)) return TYPE_COMMUNITY_ID;
-        if (self::validateGroupId($id, TYPE_VANITY)) return TYPE_VANITY;
+        if (self::validateGroupId($id, ID_TYPE_COMMUNITY)) return ID_TYPE_COMMUNITY;
+        if (self::validateGroupId($id, ID_TYPE_VANITY)) return ID_TYPE_VANITY;
         return FALSE;
     }
 
@@ -22,13 +22,13 @@ class GroupTools
     public function validateGroupId($id, $expected_type)
     {
         switch ($expected_type) {
-            case TYPE_COMMUNITY_ID:
+            case ID_TYPE_COMMUNITY:
                 if (ctype_digit($id) && (strlen($id) == 18)) {
                     return TRUE;
                 } else {
                     return FALSE;
                 }
-            case TYPE_VANITY:
+            case ID_TYPE_VANITY:
                 // TODO: Validate
                 return TRUE;
             default:

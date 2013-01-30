@@ -26,7 +26,7 @@ class CommunityAPI
 
     public function getOwnedApps($community_id)
     {
-        if ($this->tools->users->validateUserId($community_id, TYPE_COMMUNITY_ID) == FALSE)
+        if ($this->tools->users->validateUserId($community_id, ID_TYPE_COMMUNITY) == FALSE)
             throw new WrongIDException();
         $contents = self::getContent('http://steamcommunity.com/profiles/' . $community_id . '/games?tab=all&xml=1');
         if ($contents === FALSE) {

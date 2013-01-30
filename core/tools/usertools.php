@@ -1,19 +1,20 @@
 <?php
 
+define('ID_TYPE_COMMUNITY', 'communityid');
+define('ID_TYPE_STEAM', 'steamid');
+define('ID_TYPE_VANITY', 'vanityid');
+
 class UserTools
 {
 
     /**
      * Get HTML code with badges (images)
-     * @param $community_id User's community ID
+     * @param int $community_id User's community ID
      * @return null|string Returns HTML with badges on success or NULL if badges weren't found
      * @throws WrongIDException
      */
     public function getBadges($community_id)
     {
-        if (self::validateUserId($community_id, TYPE_COMMUNITY_ID) !== TRUE) {
-            throw new WrongIDException($community_id);
-        }
         $url = 'http://steamcommunity.com/profiles/' . $community_id;
         $profile_page_html = file_get_html($url);
         $badges_html = '';
@@ -26,18 +27,18 @@ class UserTools
 
     /**
      * Converts User ID into Community ID
-     * @param $id User ID
+     * @param mixed $id User ID
      * @return bool|null|string Returns Community ID or FALSE if supplied ID cannot be converted
      */
     public function convertToCommunityId($id)
     {
         switch (self::getTypeOfId($id)) {
-            case TYPE_COMMUNITY_ID:
+            case ID_TYPE_COMMUNITY:
                 return $id;
-            case TYPE_VANITY:
-                $webapi = new WebAPI();
-                return $webapi->ResolveVanityURL($id);
-            case TYPE_STEAM_ID:
+            case ID_TYPE_VANITY:
+                $api_interface = new ISteamUser();
+                return $api_interface->ResolveVanityURL($id);
+            case ID_TYPE_STEAM:
                 return self::steamIdToCommunityId($id);
             default:
                 return FALSE;
@@ -46,32 +47,32 @@ class UserTools
 
     /**
      * Returns type of supplied ID
-     * @param $id User ID
+     * @param mixed $id User ID
      * @return bool|string Returns type of ID or FALSE if not determined
      */
     public function getTypeOfId($id)
     {
-        if (self::validateUserId($id, TYPE_COMMUNITY_ID)) return TYPE_COMMUNITY_ID;
-        if (self::validateUserId($id, TYPE_STEAM_ID)) return TYPE_STEAM_ID;
-        if (self::validateUserId($id, TYPE_VANITY)) return TYPE_VANITY;
+        if (self::validateUserId($id, ID_TYPE_COMMUNITY)) return ID_TYPE_COMMUNITY;
+        if (self::validateUserId($id, ID_TYPE_STEAM)) return ID_TYPE_STEAM;
+        if (self::validateUserId($id, ID_TYPE_VANITY)) return ID_TYPE_VANITY;
         return FALSE;
     }
 
     /**
-     * @param $id User ID
-     * @param $expected_type Expected type of ID
+     * @param mixed $id User ID
+     * @param string $expected_type Expected type of ID
      * @return bool TRUE if correct, FALSE otherwise
      */
     public function validateUserId($id, $expected_type)
     {
         switch ($expected_type) {
-            case TYPE_COMMUNITY_ID:
+            case ID_TYPE_COMMUNITY:
                 if (ctype_digit($id) && (strlen($id) == 17)) return TRUE;
                 else return FALSE;
-            case TYPE_STEAM_ID:
+            case ID_TYPE_STEAM:
                 if (preg_match('/((?i:STEAM)_)?0:[0-9]:[0-9]*/', $id)) return TRUE;
                 else return FALSE;
-            case TYPE_VANITY:
+            case ID_TYPE_VANITY:
                 // TODO: Validate
                 if (TRUE) return TRUE;
                 else return FALSE;
@@ -83,7 +84,7 @@ class UserTools
 
     /**
      * Converts Community ID to Steam ID
-     * @param $community_id Community ID
+     * @param int $community_id Community ID
      * @param bool $is_short Is short Steam ID required
      * @return string Steam ID
      * @throws WrongIDException
@@ -103,7 +104,7 @@ class UserTools
     /**
      * Converts Steam ID to Community ID
      * Example input: STEAM_0:0:17336203 or 0:0:17336203
-     * @param $steam_id Full or short Steam ID
+     * @param string $steam_id Full or short Steam ID
      * @return string Community ID
      * @throws WrongIDException
      */
@@ -121,4 +122,9 @@ class UserTools
         return ($y * 2) + $x + 76561197960265728;
     }
 
+}
+
+
+class WrongIDException extends Exception
+{
 }
