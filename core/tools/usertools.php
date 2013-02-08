@@ -4,7 +4,7 @@ define('USER_ID_TYPE_COMMUNITY', 'communityid');
 define('USER_ID_TYPE_STEAM', 'steamid');
 define('USER_ID_TYPE_VANITY', 'vanityid');
 
-class UserTools
+class UserTools extends Tool
 {
 
     /**
@@ -123,7 +123,6 @@ class UserTools
     }
 
 }
-
 
 class WrongIDException extends Exception
 {

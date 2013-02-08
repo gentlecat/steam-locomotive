@@ -3,7 +3,7 @@
 define('GROUP_ID_TYPE_STEAM', 'steamid');
 define('GROUP_ID_TYPE_VANITY', 'vanityid');
 
-class GroupTools
+class GroupTools extends Tool
 {
 
     /**
