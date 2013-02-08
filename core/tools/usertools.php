@@ -1,8 +1,8 @@
 <?php
 
-define('ID_TYPE_COMMUNITY', 'communityid');
-define('ID_TYPE_STEAM', 'steamid');
-define('ID_TYPE_VANITY', 'vanityid');
+define('USER_ID_TYPE_COMMUNITY', 'communityid');
+define('USER_ID_TYPE_STEAM', 'steamid');
+define('USER_ID_TYPE_VANITY', 'vanityid');
 
 class UserTools
 {
@@ -33,12 +33,12 @@ class UserTools
     public function convertToCommunityId($id)
     {
         switch (self::getTypeOfId($id)) {
-            case ID_TYPE_COMMUNITY:
+            case USER_ID_TYPE_COMMUNITY:
                 return $id;
-            case ID_TYPE_VANITY:
+            case USER_ID_TYPE_VANITY:
                 $api_interface = new ISteamUser();
                 return $api_interface->ResolveVanityURL($id);
-            case ID_TYPE_STEAM:
+            case USER_ID_TYPE_STEAM:
                 return self::steamIdToCommunityId($id);
             default:
                 return FALSE;
@@ -52,9 +52,9 @@ class UserTools
      */
     public function getTypeOfId($id)
     {
-        if (self::validateUserId($id, ID_TYPE_COMMUNITY)) return ID_TYPE_COMMUNITY;
-        if (self::validateUserId($id, ID_TYPE_STEAM)) return ID_TYPE_STEAM;
-        if (self::validateUserId($id, ID_TYPE_VANITY)) return ID_TYPE_VANITY;
+        if (self::validateUserId($id, USER_ID_TYPE_COMMUNITY)) return USER_ID_TYPE_COMMUNITY;
+        if (self::validateUserId($id, USER_ID_TYPE_STEAM)) return USER_ID_TYPE_STEAM;
+        if (self::validateUserId($id, USER_ID_TYPE_VANITY)) return USER_ID_TYPE_VANITY;
         return FALSE;
     }
 
@@ -66,13 +66,13 @@ class UserTools
     public function validateUserId($id, $expected_type)
     {
         switch ($expected_type) {
-            case ID_TYPE_COMMUNITY:
+            case USER_ID_TYPE_COMMUNITY:
                 if (ctype_digit($id) && (strlen($id) == 17)) return TRUE;
                 else return FALSE;
-            case ID_TYPE_STEAM:
+            case USER_ID_TYPE_STEAM:
                 if (preg_match('/((?i:STEAM)_)?0:[0-9]:[0-9]*/', $id)) return TRUE;
                 else return FALSE;
-            case ID_TYPE_VANITY:
+            case USER_ID_TYPE_VANITY:
                 // TODO: Validate
                 if (TRUE) return TRUE;
                 else return FALSE;

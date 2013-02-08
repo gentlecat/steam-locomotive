@@ -26,7 +26,7 @@ class CommunityAPI
 
     public function getOwnedApps($community_id)
     {
-        if ($this->tools->users->validateUserId($community_id, ID_TYPE_COMMUNITY) == FALSE)
+        if ($this->tools->users->validateUserId($community_id, USER_ID_TYPE_COMMUNITY) == FALSE)
             throw new WrongIDException();
         $contents = self::getContent('http://steamcommunity.com/profiles/' . $community_id . '/games?tab=all&xml=1');
         if ($contents === FALSE) {
@@ -50,13 +50,13 @@ class CommunityAPI
 
     public function getGroupInfoById($group_id)
     {
-        $url = 'http://steamcommunity.com/gid/' . $group_id . '/memberslistxml/?xml=1';
+        $url = 'http://steamcommunity.com/gid/' . $group_id . '/memberslistxml/';
         return self::getGroupInfo($url);
     }
 
     public function getGroupInfoByName($group_name)
     {
-        $url = 'http://steamcommunity.com/groups/' . $group_name . '/memberslistxml/?xml=1';
+        $url = 'http://steamcommunity.com/groups/' . $group_name . '/memberslistxml/';
         return self::getGroupInfo($url);
     }
 
@@ -67,14 +67,8 @@ class CommunityAPI
             throw new SteamAPIUnavailableException();
         } else {
             // TODO: This is probably not implemented correctly (errors might occur if requested ID was wrong and group doesn't exist)
-            try {
-                $xml = new SimpleXMLElement($contents);
-                return $xml;
-            } catch (Exception $e) {
-                // Catching XML parsing errors
-                // TODO: Handle this properly
-                throw new SteamAPIUnavailableException();
-            }
+            $xml = new SimpleXMLElement($contents);
+            return $xml;
         }
     }
 
