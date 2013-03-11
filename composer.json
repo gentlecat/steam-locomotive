@@ -1,5 +1,5 @@
 {
-    "name": "tsukanov/steam-locaomotive",
+    "name": "tsukanov/steam-locomotive",
     "type": "library",
     "description": "PHP wrapper for Steam API with some useful tools",
     "keywords": ["steam"],
