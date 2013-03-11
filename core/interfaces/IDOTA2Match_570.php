@@ -19,6 +19,18 @@ class IDOTA2Match_570 extends API_Interface
         return $json->result;
     }
 
+    public function GetTeamInfoByTeamID($start_at_team_id, $teams_requested)
+    {
+        $params = array(
+            'start_at_team_id' => $start_at_team_id,
+            'teams_requested' => $teams_requested
+        );
+        $contents = self::getContent(__CLASS__, __FUNCTION__, 1, $params);
+        if ($contents === FALSE) throw new SteamAPIUnavailableException($contents);
+        $json = json_decode($contents);
+        return $json->result;
+    }
+
     public function GetLiveLeagueGames()
     {
         $contents = self::getContent(__CLASS__, __FUNCTION__, 1);
