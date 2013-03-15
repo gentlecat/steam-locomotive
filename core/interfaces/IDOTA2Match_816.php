@@ -1,6 +1,6 @@
 <?php
 
-class IDOTA2Match_816 extends API_Interface
+class IDOTA2Match_816 extends Web_API_Interface
 {
 
     /**

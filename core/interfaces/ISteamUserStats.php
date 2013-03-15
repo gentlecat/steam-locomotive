@@ -1,6 +1,6 @@
 <?php
 
-class ISteamUserStats extends API_Interface
+class ISteamUserStats extends Web_API_Interface
 {
     /**
      * @param unit64 $gameid GameID to retrieve the achievement percentages for

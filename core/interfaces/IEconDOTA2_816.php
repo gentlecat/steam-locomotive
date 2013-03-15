@@ -1,6 +1,6 @@
 <?php
 
-class IEconDOTA2_816 extends API_Interface
+class IEconDOTA2_816 extends Web_API_Interface
 {
 
     public function GetTicketSaleStatus()

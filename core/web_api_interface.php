@@ -3,7 +3,7 @@
 define('WEB_API_HOSTNAME', 'api.steampowered.com');
 define('PROTOCOL', 'https');
 
-class API_Interface
+class Web_API_Interface
 {
 
     public function getContent($interface, $method, $version, $parameters = array())

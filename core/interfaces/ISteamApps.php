@@ -1,6 +1,6 @@
 <?php
 
-class ISteamApps extends API_Interface
+class ISteamApps extends Web_API_Interface
 {
 
     public function GetAppList()

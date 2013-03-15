@@ -9,7 +9,7 @@ class CommunityAPI
 
     function __construct()
     {
-        $this->tools = new Tools();
+        $this->tools = new LocomotiveTools();
     }
 
     private function getContent($url)

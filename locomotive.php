@@ -2,25 +2,10 @@
 
 define('LOCOMOTIVE_PATH', dirname(__FILE__) . '/');
 define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'core/');
-define('LOCOMOTIVE_INTERFACES_PATH', LOCOMOTIVE_CORE_PATH . 'interfaces/');
 
 require 'vendor/autoload.php'; // Composer autoload
 require LOCOMOTIVE_CORE_PATH . 'exceptions.php';
-require LOCOMOTIVE_CORE_PATH . 'api_interface.php';
-require LOCOMOTIVE_CORE_PATH . 'tools.php';
-require LOCOMOTIVE_CORE_PATH . 'communityapi.php';
 
-/**
- * Interfaces
- */
-require LOCOMOTIVE_INTERFACES_PATH . 'IDOTA2Match_570.php';
-require LOCOMOTIVE_INTERFACES_PATH . 'IEconDOTA2_570.php';
-require LOCOMOTIVE_INTERFACES_PATH . 'ISteamApps.php';
-require LOCOMOTIVE_INTERFACES_PATH . 'ISteamGameServerAccount.php';
-require LOCOMOTIVE_INTERFACES_PATH . 'ISteamRemoteStorage.php';
-require LOCOMOTIVE_INTERFACES_PATH . 'ISteamUser.php';
-require LOCOMOTIVE_INTERFACES_PATH . 'ISteamUserStats.php';
-require LOCOMOTIVE_INTERFACES_PATH . 'ISteamWebAPIUtil.php';
 
 /**
  * Main class of Steam Locomotive library
@@ -35,10 +20,13 @@ class Locomotive
     {
         $GLOBALS['api_key'] = $api_key;
 
-        $this->tools = new Tools();
-
-        $this->communityapi = new CommunityAPI();
-
+        /*
+         * Web API
+         */
+        require LOCOMOTIVE_CORE_PATH . 'web_api_interface.php';
+        foreach (glob(LOCOMOTIVE_CORE_PATH . 'interfaces/*.php') as $filename) {
+            require $filename;
+        }
         $this->IDOTA2Match_570 = new IDOTA2Match_570();
         $this->IEconDOTA2_570 = new IEconDOTA2_570();
         $this->ISteamApps = new ISteamApps();
@@ -46,7 +34,36 @@ class Locomotive
         $this->ISteamRemoteStorage = new ISteamRemoteStorage();
         $this->ISteamUser = new ISteamUser();
         $this->ISteamUserStats = new ISteamUserStats();
-        $this->ISteamWebAPIUtil = new ISteamWebAPIUtil();
+        $this->ISteamWebAPIUtil = new ISteamWebWebAPIUtil();
+
+        /*
+         * Tools
+         */
+        $this->tools = new LocomotiveTools();
+
+        /*
+         * Community API
+         */
+        // TODO: Remove (deprecated)
+        require LOCOMOTIVE_CORE_PATH . 'communityapi.php';
+        $this->communityapi = new CommunityAPI();
+    }
+
+}
+
+class LocomotiveTools
+{
+
+    public function __construct()
+    {
+        require LOCOMOTIVE_CORE_PATH . 'tool.php';
+        foreach (glob(LOCOMOTIVE_CORE_PATH . 'tools/*.php') as $filename) {
+            require $filename;
+        }
+        $this->users = new UserTools();
+        $this->groups = new GroupTools();
+        $this->apps = new AppTools();
+        $this->dota = new DotaTools();
     }
 
 }

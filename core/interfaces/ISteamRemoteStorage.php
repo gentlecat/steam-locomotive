@@ -1,6 +1,6 @@
 <?php
 
-class ISteamRemoteStorage extends API_Interface
+class ISteamRemoteStorage extends Web_API_Interface
 {
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-class ISteamGameServerAccount extends API_Interface
+class ISteamGameServerAccount extends Web_API_Interface
 {
 
     /**

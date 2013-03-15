@@ -1,6 +1,6 @@
 <?php
 
-class ISteamUser extends API_Interface
+class ISteamUser extends Web_API_Interface
 {
 
     /**
