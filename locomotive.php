@@ -6,6 +6,9 @@ define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'core/');
 require 'vendor/autoload.php'; // Composer autoload
 require LOCOMOTIVE_CORE_PATH . 'exceptions.php';
 
+require LOCOMOTIVE_CORE_PATH . 'web_api_interface.php';
+require LOCOMOTIVE_CORE_PATH . 'tool.php';
+require LOCOMOTIVE_CORE_PATH . 'communityapi.php';
 
 /**
  * Main class of Steam Locomotive library
@@ -23,7 +26,6 @@ class Locomotive
         /*
          * Web API
          */
-        require LOCOMOTIVE_CORE_PATH . 'web_api_interface.php';
         foreach (glob(LOCOMOTIVE_CORE_PATH . 'interfaces/*.php') as $filename) {
             require $filename;
         }
@@ -45,7 +47,6 @@ class Locomotive
          * Community API
          */
         // TODO: Remove (deprecated)
-        require LOCOMOTIVE_CORE_PATH . 'communityapi.php';
         $this->communityapi = new CommunityAPI();
     }
 
@@ -56,7 +57,6 @@ class LocomotiveTools
 
     public function __construct()
     {
-        require LOCOMOTIVE_CORE_PATH . 'tool.php';
         foreach (glob(LOCOMOTIVE_CORE_PATH . 'tools/*.php') as $filename) {
             require $filename;
         }
