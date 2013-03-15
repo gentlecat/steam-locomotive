@@ -39,7 +39,7 @@ class Locomotive
         $this->ISteamRemoteStorage = new ISteamRemoteStorage();
         $this->ISteamUser = new ISteamUser();
         $this->ISteamUserStats = new ISteamUserStats();
-        $this->ISteamWebAPIUtil = new ISteamWebWebAPIUtil();
+        $this->ISteamWebAPIUtil = new ISteamWebAPIUtil();
 
         $this->tools = new LocomotiveTools();
 

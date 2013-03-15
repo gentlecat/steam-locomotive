@@ -1,6 +1,6 @@
 <?php
 
-class ISteamWebWebAPIUtil extends Web_API_Interface
+class ISteamWebAPIUtil extends Web_API_Interface
 {
 
     public function GetSupportedAPIList()
