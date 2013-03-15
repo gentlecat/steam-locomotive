@@ -13,13 +13,9 @@ Composer is a tool for dependency management in PHP. Steam Locomotive is availab
         }
     }
 
-## Configuration
-1. Get your Steam API key from https://steamcommunity.com/dev/apikey
-2. Set STEAM_API_KEY constant in *config-sample.php*
-3. Change name of *config-sample.php* to *config.php*
-
 ## Usage
-    $loco_lib = new Locomotive();
+
+    $loco_lib = new Locomotive(YOUR_STEAM_API_KEY);
    
 ## Requirements
 * PHP 5

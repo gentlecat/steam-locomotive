@@ -29,8 +29,13 @@ require LOCOMOTIVE_INTERFACES_PATH . 'ISteamWebAPIUtil.php';
 class Locomotive
 {
 
-    function __construct()
+    /**
+     * @param string $api_key Steam API key
+     */
+    function __construct($api_key)
     {
+        $GLOBALS['api_key'] = $api_key;
+
         $this->tools = new Tools();
 
         $this->communityapi = new CommunityAPI();

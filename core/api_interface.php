@@ -1,6 +1,7 @@
 <?php
 
 define('WEB_API_HOSTNAME', 'api.steampowered.com');
+define('PROTOCOL', 'https');
 
 class API_Interface
 {
@@ -8,7 +9,7 @@ class API_Interface
     public function getContent($interface, $method, $version, $parameters = array())
     {
         $url = PROTOCOL . '://' . WEB_API_HOSTNAME . '/' . $interface . '/' . $method . '/v' . $version
-            . '/?key=' . STEAM_API_KEY;
+            . '/?key=' . $GLOBALS['api_key'];
         $param_keys = array_keys($parameters);
         foreach ($param_keys as $key) {
             $val = $parameters[$key];
