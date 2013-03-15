@@ -4,10 +4,19 @@ define('LOCOMOTIVE_PATH', dirname(__FILE__) . '/');
 define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'core/');
 
 require 'vendor/autoload.php'; // Composer autoload
+
 require LOCOMOTIVE_CORE_PATH . 'exceptions.php';
 
 require LOCOMOTIVE_CORE_PATH . 'web_api_interface.php';
+foreach (glob(LOCOMOTIVE_CORE_PATH . 'interfaces/*.php') as $filename) {
+    require $filename;
+}
+
 require LOCOMOTIVE_CORE_PATH . 'tool.php';
+foreach (glob(LOCOMOTIVE_CORE_PATH . 'tools/*.php') as $filename) {
+    require $filename;
+}
+
 require LOCOMOTIVE_CORE_PATH . 'communityapi.php';
 
 /**
@@ -23,12 +32,6 @@ class Locomotive
     {
         $GLOBALS['api_key'] = $api_key;
 
-        /*
-         * Web API
-         */
-        foreach (glob(LOCOMOTIVE_CORE_PATH . 'interfaces/*.php') as $filename) {
-            require $filename;
-        }
         $this->IDOTA2Match_570 = new IDOTA2Match_570();
         $this->IEconDOTA2_570 = new IEconDOTA2_570();
         $this->ISteamApps = new ISteamApps();
@@ -38,14 +41,8 @@ class Locomotive
         $this->ISteamUserStats = new ISteamUserStats();
         $this->ISteamWebAPIUtil = new ISteamWebWebAPIUtil();
 
-        /*
-         * Tools
-         */
         $this->tools = new LocomotiveTools();
 
-        /*
-         * Community API
-         */
         // TODO: Remove (deprecated)
         $this->communityapi = new CommunityAPI();
     }
@@ -57,9 +54,6 @@ class LocomotiveTools
 
     public function __construct()
     {
-        foreach (glob(LOCOMOTIVE_CORE_PATH . 'tools/*.php') as $filename) {
-            require $filename;
-        }
         $this->users = new UserTools();
         $this->groups = new GroupTools();
         $this->apps = new AppTools();
