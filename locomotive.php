@@ -5,7 +5,6 @@ define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'core/');
 define('LOCOMOTIVE_INTERFACES_PATH', LOCOMOTIVE_CORE_PATH . 'interfaces/');
 
 require 'vendor/autoload.php'; // Composer autoload
-require LOCOMOTIVE_PATH . 'config.php';
 require LOCOMOTIVE_CORE_PATH . 'exceptions.php';
 require LOCOMOTIVE_CORE_PATH . 'api_interface.php';
 require LOCOMOTIVE_CORE_PATH . 'tools.php';
