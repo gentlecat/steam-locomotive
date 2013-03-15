@@ -2,20 +2,22 @@
     "name": "tsukanov/steam-locomotive",
     "type": "library",
     "description": "PHP wrapper for Steam API with some useful tools",
-    "keywords": ["steam"],
+    "license": "Apache License, Version 2.0",
     "homepage": "https://github.com/Tsukanov/steam-locomotive/",
+    "keywords": ["steam", "valve"],
     "authors": [
         {
             "name": "Roman Tsukanov",
             "email": "roman@tsukanov.me",
-            "homepage": "http://tsukanov.me",
+            "homepage": "http://tsukanov.me/",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "shark/simple_html_dom": "dev-master"
     },
     "autoload": {
-		"classmap": ["locomotive.php"]
+        "classmap": ["locomotive.php"]
     }
 }

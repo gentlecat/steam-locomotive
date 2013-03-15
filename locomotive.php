@@ -3,17 +3,12 @@
 define('LOCOMOTIVE_PATH', dirname(__FILE__) . '/');
 define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'core/');
 define('LOCOMOTIVE_INTERFACES_PATH', LOCOMOTIVE_CORE_PATH . 'interfaces/');
-define('LOCOMOTIVE_LIBS_PATH', LOCOMOTIVE_CORE_PATH . 'libs/');
 
-require LOCOMOTIVE_CORE_PATH . 'exceptions.php';
+require 'vendor/autoload.php'; // Composer autoload
 require LOCOMOTIVE_PATH . 'config.php';
-
-require LOCOMOTIVE_LIBS_PATH . 'simple_html_dom.php';
-
+require LOCOMOTIVE_CORE_PATH . 'exceptions.php';
 require LOCOMOTIVE_CORE_PATH . 'api_interface.php';
-
 require LOCOMOTIVE_CORE_PATH . 'tools.php';
-
 require LOCOMOTIVE_CORE_PATH . 'communityapi.php';
 
 /**
