@@ -13,50 +13,35 @@ class IDOTA2Match_205790 extends Web_API_Interface
         $params = array(
             'match_id' => $match_id
         );
-        $contents = self::getContent(__CLASS__, __FUNCTION__, 1, $params);
-        if ($contents === FALSE) throw new SteamAPIUnavailableException($contents);
-        $json = json_decode($contents);
-        return $json->result;
+        return self::get(__CLASS__, __FUNCTION__, 1, $params);
     }
 
-    public function GetMatchHistoryBySequenceNum($start_at_match_seq_num, $matches_requested)
-    {
-        $params = array(
-            'start_at_match_seq_num' => $start_at_match_seq_num,
-            'matches_requested' => $matches_requested
-        );
-        $contents = self::getContent(__CLASS__, __FUNCTION__, 1, $params);
-        if ($contents === FALSE) throw new SteamAPIUnavailableException($contents);
-        $json = json_decode($contents);
-        return $json->result;
-    }
-
-    public function GetTeamInfoByTeamID($start_at_team_id, $teams_requested)
+    public function GetTeamInfoByTeamID($start_at_team_id= NULL, $teams_requested= NULL)
     {
         $params = array(
             'start_at_team_id' => $start_at_team_id,
             'teams_requested' => $teams_requested
         );
-        $contents = self::getContent(__CLASS__, __FUNCTION__, 1, $params);
-        if ($contents === FALSE) throw new SteamAPIUnavailableException($contents);
-        $json = json_decode($contents);
-        return $json->result;
+        return self::get(__CLASS__, __FUNCTION__, 1, $params);
     }
 
     public function GetLiveLeagueGames()
     {
-        $contents = self::getContent(__CLASS__, __FUNCTION__, 1);
-        if ($contents === FALSE) throw new SteamAPIUnavailableException($contents);
-        $json = json_decode($contents);
-        return $json->result;
+        return self::get(__CLASS__, __FUNCTION__, 1);
     }
 
     public function GetLeagueListing()
     {
-        $contents = self::getContent(__CLASS__, __FUNCTION__, 1);
-        if ($contents === FALSE) throw new SteamAPIUnavailableException($contents);
-        $json = json_decode($contents);
-        return $json->result;
+        return self::get(__CLASS__, __FUNCTION__, 1);
+    }
+
+    public function GetMatchHistoryBySequenceNum($start_at_match_seq_num= NULL, $matches_requested= NULL)
+    {
+        $params = array(
+            'start_at_match_seq_num' => $start_at_match_seq_num,
+            'matches_requested' => $matches_requested
+        );
+        return self::get(__CLASS__, __FUNCTION__, 1, $params);
     }
 
     public function GetMatchHistory($matches_requested = NULL,
@@ -80,10 +65,7 @@ class IDOTA2Match_205790 extends Web_API_Interface
             'league_id' => $league_id,
             'player_name' => $player_name,
         );
-        $contents = self::getContent(__CLASS__, __FUNCTION__, 1, $params);
-        if ($contents === FALSE) throw new SteamAPIUnavailableException($contents);
-        $json = json_decode($contents);
-        return $json->result;
+        return self::get(__CLASS__, __FUNCTION__, 1, $params);
     }
 
 }
