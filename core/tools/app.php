@@ -1,6 +1,6 @@
 <?php
 
-class AppTools extends Tool
+class App extends Tool
 {
 
     function getAppLogoURL($app_id)

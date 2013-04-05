@@ -1,6 +1,6 @@
 <?php
 
-class DotaTools extends Tool
+class Dota extends Tool
 {
 
     function getHeroIconURL($hero_name)
