@@ -1,12 +1,15 @@
 <?php
 
+use Locomotive\Tools;
+
 define('LOCOMOTIVE_PATH', dirname(__FILE__) . '/');
 define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'core/');
 
 require LOCOMOTIVE_CORE_PATH . 'exceptions.php';
 
+//use Locomotive\Tools;
 // Importing interfaces
-require LOCOMOTIVE_CORE_PATH . 'web_api_interface.php';
+require LOCOMOTIVE_CORE_PATH . 'web_interface.php';
 define('LOCOMOTIVE_INTERFACES_PATH', LOCOMOTIVE_CORE_PATH . 'interfaces/');
 foreach (glob(LOCOMOTIVE_INTERFACES_PATH . '*.php') as $filename) {
     require $filename;
@@ -36,7 +39,8 @@ class Locomotive
         foreach (glob(LOCOMOTIVE_INTERFACES_PATH . '*.php') as $filename) {
             $filename = str_replace(LOCOMOTIVE_INTERFACES_PATH, '', $filename);
             $interface_name = substr($filename, 0, -4);
-            $this->$interface_name = new $interface_name();
+            $class = '\\Locomotive\\WebInterfaces\\' . $interface_name;
+            $this->$interface_name = new $class();
         }
 
         $this->tools = new LocomotiveTools();
@@ -53,7 +57,8 @@ class LocomotiveTools
         foreach (glob(LOCOMOTIVE_TOOLS_PATH . '*.php') as $filename) {
             $filename = str_replace(LOCOMOTIVE_TOOLS_PATH, '', $filename);
             $tool_name = substr($filename, 0, -4);
-            $this->$tool_name = new $tool_name();
+            $class = '\\Locomotive\\Tools\\' . $tool_name;
+            $this->$tool_name = new $class();
         }
     }
 

@@ -1,4 +1,5 @@
 <?php
+namespace Locomotive\Tools;
 
 define('USER_ID_TYPE_COMMUNITY', 'communityid');
 define('USER_ID_TYPE_STEAM', 'steamid');
@@ -83,25 +84,6 @@ class User extends Tool
     }
 
     /**
-     * Converts Community ID to Steam ID
-     * @param int $community_id Community ID
-     * @param bool $is_short Is short Steam ID required
-     * @return string Steam ID
-     * @throws WrongIDException
-     */
-    public function communityIdToSteamId($community_id, $is_short = FALSE)
-    {
-        $temp = intval($community_id) - 76561197960265728;
-        $odd_id = $temp % 2;
-        $temp = floor($temp / 2);
-        if ($is_short) {
-            return $odd_id . ':' . $temp;
-        } else {
-            return 'STEAM_0:' . $odd_id . ':' . $temp;
-        }
-    }
-
-    /**
      * Converts Steam ID to Community ID
      * Example input: STEAM_0:0:17336203 or 0:0:17336203
      * @param string $steam_id Full or short Steam ID
@@ -122,8 +104,27 @@ class User extends Tool
         return ($y * 2) + $x + 76561197960265728;
     }
 
+    /**
+     * Converts Community ID to Steam ID
+     * @param int $community_id Community ID
+     * @param bool $is_short Is short Steam ID required
+     * @return string Steam ID
+     * @throws WrongIDException
+     */
+    public function communityIdToSteamId($community_id, $is_short = FALSE)
+    {
+        $temp = intval($community_id) - 76561197960265728;
+        $odd_id = $temp % 2;
+        $temp = floor($temp / 2);
+        if ($is_short) {
+            return $odd_id . ':' . $temp;
+        } else {
+            return 'STEAM_0:' . $odd_id . ':' . $temp;
+        }
+    }
+
 }
 
-class WrongIDException extends Exception
+class WrongIDException extends \Exception
 {
 }

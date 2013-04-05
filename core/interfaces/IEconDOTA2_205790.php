@@ -1,11 +1,12 @@
 <?php
+namespace Locomotive\WebInterfaces;
 
-class IEconDOTA2_205790 extends Web_API_Interface
+class IEconDOTA2_205790 extends WebInterface
 {
 
     public function GetTicketSaleStatus()
     {
-        return self::get(__CLASS__, __FUNCTION__, 1);
+        return self::get(getClassName($this), __FUNCTION__, 1);
     }
 
     /**
@@ -20,7 +21,7 @@ class IEconDOTA2_205790 extends Web_API_Interface
             'language' => $language,
             'itemizedonly' => $itemizedonly
         );
-        return self::get(__CLASS__, __FUNCTION__, 1, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -33,7 +34,7 @@ class IEconDOTA2_205790 extends Web_API_Interface
         $params = array(
             'language' => $language
         );
-        return self::get(__CLASS__, __FUNCTION__, 1, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+namespace Locomotive\Tools;
 
 class App extends Tool
 {

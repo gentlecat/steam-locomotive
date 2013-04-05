@@ -1,4 +1,5 @@
 <?php
+namespace Locomotive\Tools;
 
 define('GROUP_ID_TYPE_STEAM', 'steamid');
 define('GROUP_ID_TYPE_VANITY', 'vanityid');

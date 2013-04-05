@@ -1,9 +1,10 @@
 <?php
+namespace Locomotive\WebInterfaces;
 
 define('WEB_API_HOSTNAME', 'api.steampowered.com');
 define('PROTOCOL', 'https');
 
-class Web_API_Interface
+class WebInterface
 {
 
     public function get($interface, $method, $version, $parameters = array())
@@ -36,4 +37,16 @@ class Web_API_Interface
         return $result;
     }
 
+}
+
+function getClassName($object)
+{
+    $class = get_class($object);
+    $namespace_end = strrpos($class, '\\');
+    if ($namespace_end) {
+        // Removing namespace
+        return $name = substr($class, $namespace_end + 1);
+    } else {
+        return $class;
+    }
 }

@@ -1,6 +1,7 @@
 <?php
+namespace Locomotive\WebInterfaces;
 
-class ISteamUser extends Web_API_Interface
+class ISteamUser extends WebInterface
 {
 
     /**
@@ -15,7 +16,7 @@ class ISteamUser extends Web_API_Interface
             'steamID' => $steamID,
             'relationship' => $relationship
         );
-        return self::get(__CLASS__, __FUNCTION__, 1, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -28,7 +29,7 @@ class ISteamUser extends Web_API_Interface
         $params = array(
             'steamids' => implode(",", $steamids)
         );
-        return self::get(__CLASS__, __FUNCTION__, 1, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -41,7 +42,7 @@ class ISteamUser extends Web_API_Interface
         $params = array(
             'steamid' => $steamid
         );
-        return self::get(__CLASS__, __FUNCTION__, 1, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function ResolveVanityURL($vanityurl)
@@ -49,7 +50,7 @@ class ISteamUser extends Web_API_Interface
         $params = array(
             'vanityurl' => $vanityurl
         );
-        return self::get(__CLASS__, __FUNCTION__, 1, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -62,7 +63,7 @@ class ISteamUser extends Web_API_Interface
         $params = array(
             'steamids' => implode(",", $steamids)
         );
-        return self::get(__CLASS__, __FUNCTION__, 2, $params);
+        return self::get(getClassName($this), __FUNCTION__, 2, $params);
     }
 
 }

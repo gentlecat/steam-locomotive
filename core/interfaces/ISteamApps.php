@@ -1,11 +1,12 @@
 <?php
+namespace Locomotive\WebInterfaces;
 
-class ISteamApps extends Web_API_Interface
+class ISteamApps extends WebInterface
 {
 
     public function GetAppList()
     {
-        return self::get(__CLASS__, __FUNCTION__, 2);
+        return self::get(getClassName($this), __FUNCTION__, 2);
     }
 
     /**
@@ -18,7 +19,7 @@ class ISteamApps extends Web_API_Interface
         $params = array(
             'addr' => $addr
         );
-        return self::get(__CLASS__, __FUNCTION__, 1, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -33,7 +34,7 @@ class ISteamApps extends Web_API_Interface
             'appid' => $appid,
             'version' => $version
         );
-        return self::get(__CLASS__, __FUNCTION__, 1, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
 }
