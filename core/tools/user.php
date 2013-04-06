@@ -80,7 +80,6 @@ class User extends Tool
             default:
                 return FALSE;
         }
-        return FALSE;
     }
 
     /**
