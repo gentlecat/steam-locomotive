@@ -60,7 +60,6 @@ class LocomotiveTools
         // Defining tools
         $this->app = new \Locomotive\Tools\App();
         $this->dota = new \Locomotive\Tools\Dota();
-        $this->group = new \Locomotive\Tools\Group();
         $this->user = new \Locomotive\Tools\User();
     }
 
