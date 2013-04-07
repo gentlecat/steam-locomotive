@@ -2,13 +2,12 @@
 
 use Locomotive\Tools\App;
 
-require dirname(__FILE__) . '/../../core/tool.php';
-require dirname(__FILE__) . '/../../core/tools/app.php';
+require dirname(__FILE__) . '/../init.php';
 
 class AppTest extends PHPUnit_Framework_TestCase
 {
 
-    public function testOne()
+    public function testGetAppLogoURL()
     {
         $app_id = 10;
         $expected = 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header.jpg';
