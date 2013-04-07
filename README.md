@@ -2,6 +2,7 @@
 
 Steam Locomotive is a PHP wrapper for Steam Web API with useful tools such as Steam ID converters, validators, etc.
 
+
 ## Installation
 
 ### [Composer](http://getcomposer.org/)
@@ -13,13 +14,11 @@ Composer is a tool for dependency management in PHP. Steam Locomotive is availab
         }
     }
 
+
 ## Usage
 
     $loco_lib = new Locomotive(YOUR_STEAM_API_KEY);
-   
-## Requirements
-* PHP 5
-* [cURL](http://php.net/manual/en/book.curl.php)
+
 
 ## License
 
