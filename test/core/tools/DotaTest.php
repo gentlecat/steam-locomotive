@@ -2,7 +2,7 @@
 
 use Locomotive\Tools\Dota;
 
-require dirname(__FILE__) . '/../init.php';
+require dirname(__FILE__) . '/../../init.php';
 
 class DotaTest extends PHPUnit_Framework_TestCase
 {
