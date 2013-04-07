@@ -1,18 +1,18 @@
 <?php
 namespace Locomotive\Tools;
 
-class Tool {
+use Guzzle\Http\Client;
+
+class Tool
+{
 
     public function getContent($url)
     {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
-            $result = FALSE;
-        }
-        curl_close($ch);
-        return $result;
+        $client = new Client($url);
+        $request = $client->get();
+        $response = $request->send();
+
+        return $response->getBody(true);
     }
 
 }

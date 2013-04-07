@@ -1,6 +1,8 @@
 <?php
 namespace Locomotive\WebInterfaces;
 
+use Guzzle\Http\Client;
+
 define('WEB_API_HOSTNAME', 'api.steampowered.com');
 define('PROTOCOL', 'https');
 
@@ -9,19 +11,16 @@ class WebInterface
 
     public function get($interface, $method, $version, $parameters = array())
     {
-        $url = PROTOCOL . '://' . WEB_API_HOSTNAME . '/' . $interface . '/' . $method . '/v' . $version
+        $uri = '/' . $interface . '/' . $method . '/v' . $version
             . '/?key=' . $GLOBALS['api_key'] . self::parseParameters($parameters);
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $result = curl_exec($ch);
-        if (curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
-            $result = FALSE;
+
+        $client = new Client(PROTOCOL . '://' . WEB_API_HOSTNAME);
+        $request = $client->get($uri);
+        $response = $request->send();
+
+        if ($response->getStatusCode() == 200) {
+            return json_decode($response->getBody(true));
         }
-        if (strpos(curl_getinfo($ch, CURLINFO_CONTENT_TYPE), 'json') !== false) {
-            $result = json_decode($result);
-        }
-        curl_close($ch);
-        return $result;
     }
 
     private function parseParameters($parameters = array())
