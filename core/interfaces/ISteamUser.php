@@ -26,10 +26,22 @@ class ISteamUser extends WebInterface
      */
     public function GetPlayerBans($steamids)
     {
-        $params = array(
-            'steamids' => implode(",", $steamids)
-        );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        $bans = null;
+        foreach (array_chunk($steamids, 100) as $iteration => $chunk) {
+            $params = array(
+                'steamids' => implode(",", $chunk)
+            );
+            $response = self::get(getClassName($this), __FUNCTION__, 1, $params);
+            if ($iteration === 0) {
+                $bans = $response;
+            } else {
+                $bans->players = array_merge(
+                    $bans->players,
+                    $response->players
+                );
+            }
+        }
+        return $bans;
     }
 
     /**
@@ -60,10 +72,22 @@ class ISteamUser extends WebInterface
      */
     public function GetPlayerSummaries($steamids)
     {
-        $params = array(
-            'steamids' => implode(",", $steamids)
-        );
-        return self::get(getClassName($this), __FUNCTION__, 2, $params);
+        $summaries = null;
+        foreach (array_chunk($steamids, 100) as $iteration => $chunk) {
+            $params = array(
+                'steamids' => implode(",", $chunk)
+            );
+            $response = self::get(getClassName($this), __FUNCTION__, 2, $params);
+            if ($iteration === 0) {
+                $summaries = $response;
+            } else {
+                $summaries->response->players = array_merge(
+                    $summaries->response->players,
+                    $response->response->players
+                );
+            }
+        }
+        return $summaries;
     }
 
 }
