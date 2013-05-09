@@ -26,7 +26,7 @@ class ISteamUserStats extends WebInterface
         $params = array(
             'appid' => $appid
         );
-        return self::get(getClassName($this), __FUNCTION__, 2, $params);
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
