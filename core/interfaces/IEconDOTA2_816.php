@@ -37,4 +37,12 @@ class IEconDOTA2_816 extends WebInterface
         return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
+    public function GetTournamentPrizePool($language = NULL)
+    {
+        $params = array(
+            'language' => $language
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
 }

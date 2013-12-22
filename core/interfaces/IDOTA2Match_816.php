@@ -31,6 +31,15 @@ class IDOTA2Match_816 extends WebInterface
         return self::get(getClassName($this), __FUNCTION__, 1);
     }
 
+    public function GetScheduledLeagueGames($date_min = NULL, $date_max = NULL)
+    {
+        $params = array(
+            'date_min' => $date_min,
+            'date_max' => $date_max
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
     public function GetMatchHistoryBySequenceNum($start_at_match_seq_num = NULL, $matches_requested = NULL)
     {
         $params = array(
@@ -48,7 +57,9 @@ class IDOTA2Match_816 extends WebInterface
                                     $skill = NULL,
                                     $hero_id = NULL,
                                     $league_id = NULL,
-                                    $player_name = NULL)
+                                    $tournament_games_only = NULL,
+                                    $min_players = NULL,
+                                    $game_mode = NULL)
     {
         $params = array(
             'match_id' => $matches_requested,
@@ -59,7 +70,9 @@ class IDOTA2Match_816 extends WebInterface
             'skill' => $skill,
             'hero_id' => $hero_id,
             'league_id' => $league_id,
-            'player_name' => $player_name,
+            'tournament_games_only' => $tournament_games_only,
+            'min_players' => $min_players,
+            'game_mode' => $game_mode,
         );
         return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }

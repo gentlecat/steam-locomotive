@@ -37,4 +37,13 @@ class IEconDOTA2_570 extends WebInterface
         return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
+    public function GetTournamentPrizePool($leagueid = NULL, $language = NULL)
+    {
+        $params = array(
+            'leagueid' => $leagueid,
+            'language' => $language
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
 }

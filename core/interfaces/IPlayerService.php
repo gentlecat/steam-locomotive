@@ -41,4 +41,38 @@ class IPlayerService extends WebInterface
         return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
 
+    public function GetSteamLevel($steamid)
+    {
+        $params = array(
+            'steamid' => $steamid
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
+    public function GetBadges($steamid)
+    {
+        $params = array(
+            'steamid' => $steamid
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
+    public function GetCommunityBadgeProgress($steamid, $badgeid)
+    {
+        $params = array(
+            'steamid' => $steamid,
+            'badgeid' => $badgeid
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
+    public function IsPlayingSharedGame($steamid, $appid_playing)
+    {
+        $params = array(
+            'steamid' => $steamid,
+            'appid_playing' => $appid_playing
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
 }

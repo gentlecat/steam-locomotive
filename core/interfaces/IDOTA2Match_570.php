@@ -31,11 +31,36 @@ class IDOTA2Match_570 extends WebInterface
         return self::get(getClassName($this), __FUNCTION__, 1);
     }
 
+    public function GetScheduledLeagueGames($date_min = NULL, $date_max = NULL)
+    {
+        $params = array(
+            'date_min' => $date_min,
+            'date_max' => $date_max
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
     public function GetMatchHistoryBySequenceNum($start_at_match_seq_num = NULL, $matches_requested = NULL)
     {
         $params = array(
             'start_at_match_seq_num' => $start_at_match_seq_num,
             'matches_requested' => $matches_requested
+        );
+        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+    }
+
+    public function GetTournamentPlayerStats($account_id,
+                                             $match_id = NULL,
+                                             $hero_id = NULL,
+                                             $league_id = NULL,
+                                             $time_frame = NULL)
+    {
+        $params = array(
+            'account_id' => $account_id,
+            'match_id' => $match_id,
+            'hero_id' => $hero_id,
+            'league_id' => $league_id,
+            'time_frame' => $time_frame,
         );
         return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
@@ -48,7 +73,9 @@ class IDOTA2Match_570 extends WebInterface
                                     $skill = NULL,
                                     $hero_id = NULL,
                                     $league_id = NULL,
-                                    $player_name = NULL)
+                                    $tournament_games_only = NULL,
+                                    $min_players = NULL,
+                                    $game_mode = NULL)
     {
         $params = array(
             'match_id' => $matches_requested,
@@ -59,7 +86,9 @@ class IDOTA2Match_570 extends WebInterface
             'skill' => $skill,
             'hero_id' => $hero_id,
             'league_id' => $league_id,
-            'player_name' => $player_name,
+            'tournament_games_only' => $tournament_games_only,
+            'min_players' => $min_players,
+            'game_mode' => $game_mode,
         );
         return self::get(getClassName($this), __FUNCTION__, 1, $params);
     }
