@@ -11,11 +11,11 @@ class WebInterface
 
     public function get($interface, $method, $version, $parameters = array())
     {
-        $uri = '/' . $interface . '/' . $method . '/v' . $version
-            . '/?key=' . $GLOBALS['api_key'] . self::parseParameters($parameters);
+        $path = '/' . $interface . '/' . $method . '/v' . $version . '/';
+        $query = '?key=' . $GLOBALS['api_key'] . self::parseParameters($parameters);
 
         $client = new Client(PROTOCOL . '://' . WEB_API_HOSTNAME);
-        $request = $client->get($uri);
+        $request = $client->get($path . $query);
         $response = $request->send();
 
         if ($response->getStatusCode() == 200) {

@@ -11,7 +11,6 @@ class Tool
         $client = new Client($url);
         $request = $client->get();
         $response = $request->send();
-
         return $response->getBody(true);
     }
 

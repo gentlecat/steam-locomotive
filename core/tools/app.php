@@ -6,8 +6,7 @@ class App extends Tool
 
     function getAppLogoURL($app_id, $size = 'large')
     {
-        switch($size)
-        {
+        switch ($size) {
             case 'large':
                 return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header.jpg'; // 460x215
             case 'medium':
