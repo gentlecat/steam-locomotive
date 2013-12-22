@@ -37,7 +37,7 @@ class User extends Tool
             case USER_ID_TYPE_COMMUNITY:
                 return $id;
             case USER_ID_TYPE_VANITY:
-                $api_interface = new ISteamUser();
+                $api_interface = new \Locomotive\WebInterfaces\ISteamUser();
                 return $api_interface->ResolveVanityURL($id);
             case USER_ID_TYPE_STEAM:
                 return self::steamIdToCommunityId($id);
