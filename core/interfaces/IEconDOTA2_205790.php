@@ -13,7 +13,6 @@ class IEconDOTA2_205790 extends WebInterface
      * @param $language string The language to provide hero names in.
      * @param $itemizedonly bool Return a list of itemized heroes only.
      * @return mixed
-     * @throws SteamAPIUnavailableException
      */
     public function GetHeroes($language = NULL, $itemizedonly = NULL)
     {
@@ -27,7 +26,6 @@ class IEconDOTA2_205790 extends WebInterface
     /**
      * @param $language string The language to provide rarity names in.
      * @return mixed
-     * @throws SteamAPIUnavailableException
      */
     public function GetRarities($language = NULL)
     {

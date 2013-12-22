@@ -9,7 +9,6 @@ class ISteamRemoteStorage extends WebInterface
      * @param $appid uint32 appID of product
      * @param $steamid uint64 If specified, only returns details if the file is owned by the SteamID specified
      * @return mixed
-     * @throws SteamAPIUnavailableException
      */
     public function GetUGCFileDetails($ugcid, $appid, $steamid = NULL)
     {
@@ -25,7 +24,6 @@ class ISteamRemoteStorage extends WebInterface
      * @param $collectioncount uint32 Number of collection being requested
      * @param $publishedfileids uint64 collection ids to get the details for
      * @return mixed
-     * @throws SteamAPIUnavailableException
      */
     public function GetCollectionDetails($collectioncount, $publishedfileids)
     {
@@ -40,7 +38,6 @@ class ISteamRemoteStorage extends WebInterface
      * @param $itemcount uint32 Number of items being requested
      * @param $publishedfileids uint64 published file id to look up
      * @return mixed
-     * @throws SteamAPIUnavailableException
      */
     public function GetPublishedFileDetails($itemcount, $publishedfileids)
     {

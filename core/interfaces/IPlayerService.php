@@ -8,7 +8,6 @@ class IPlayerService extends WebInterface
      * @param uint64 $steamid The player we're asking about
      * @param uint32 $count The number of games to return (0/unset: all)
      * @return mixed
-     * @throws SteamAPIUnavailableException
      */
     public function GetRecentlyPlayedGames($steamid = NULL, $count = NULL)
     {
@@ -25,7 +24,6 @@ class IPlayerService extends WebInterface
      * @param bool $include_played_free_games Free games are excluded by default.  If this is set, free games the user has played will be returned.
      * @param uint32 $appids_filter if set, restricts result set to the passed in apps
      * @return mixed
-     * @throws SteamAPIUnavailableException
      */
     public function GetOwnedGames($steamid = NULL,
                                   $include_appinfo = NULL,
