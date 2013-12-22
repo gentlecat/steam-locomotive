@@ -3,8 +3,6 @@
 define('LOCOMOTIVE_PATH', dirname(__FILE__) . '/');
 define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'core/');
 
-require LOCOMOTIVE_CORE_PATH . 'exceptions.php';
-
 // Importing interfaces
 require LOCOMOTIVE_CORE_PATH . 'web_interface.php';
 define('LOCOMOTIVE_INTERFACES_PATH', LOCOMOTIVE_CORE_PATH . 'interfaces/');
