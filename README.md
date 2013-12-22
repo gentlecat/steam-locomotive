@@ -1,24 +1,43 @@
 # Steam Locomotive
-
 Steam Locomotive is a PHP wrapper for Steam Web API with useful tools such as Steam ID converters, validators, etc.
 
+Please, feel free to contribute! You can add missing interface, fix function
+that is not working properly or do something else. Any improvements are welcome.
+
+## How it works
+
+This library wraps interfaces provided by Steam Web API into PHP classes and functions.
+It simplifies communication with Steam while preserving original structure of its API.
+Each interface, method, and parameter has the same name so you can easily start using this
+library if you worked with Steam Web API before.
+
+Also, this library provides some useful tools that are not available in official API,
+but might be needed. You can get additional details about applications, store, prices;
+convert Steam ID or validate one.
+
+### Returned data format
+In most cases functions return JSON that is decoded using [`json_decode`](http://php.net/json_decode) function.
+*See PHPDoc comments to find out more about data returned by each function.*
+
+## Usage example
+
+    $steam = new Locomotive(YOUR_STEAM_API_KEY);
+	
+	// Getting information about heroes in Dota 2
+    $response = $steam->IEconDOTA2_570->GetHeroes();
 
 ## Installation
 
 ### [Composer](http://getcomposer.org/)
-Composer is a tool for dependency management in PHP. Steam Locomotive is available as a [package](https://packagist.org/packages/tsukanov/steam-locomotive) for Composer. All you need to do is define the following requirement in your composer.json file: 
+Composer is a tool for dependency management in PHP. Steam Locomotive is available as a
+[package](https://packagist.org/packages/tsukanov/steam-locomotive) for Composer.
+All you need to do is define the following requirement in your composer.json file: 
 
     {
         "require": {
             "tsukanov/steam-locomotive": "dev-master"
         }
     }
-
-
-## Usage
-
-    $loco_lib = new Locomotive(YOUR_STEAM_API_KEY);
-
 
 ## License
 

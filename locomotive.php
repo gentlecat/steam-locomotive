@@ -18,7 +18,7 @@ foreach (glob(LOCOMOTIVE_TOOLS_PATH . '*.php') as $filename) {
 }
 
 /**
- * Main class of Steam Locomotive library
+ * Main class
  */
 class Locomotive
 {
