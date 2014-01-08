@@ -22,7 +22,7 @@ class ISteamUser extends WebInterface
      * @param $steamids  Array of steamIDs
      * @return mixed
      */
-    public function GetPlayerBans($steamids)
+    public function GetPlayerBans($steamids = array())
     {
         $bans = null;
         foreach (array_chunk($steamids, 100) as $iteration => $chunk) {
@@ -66,7 +66,7 @@ class ISteamUser extends WebInterface
      * @param $steamids Array of steamIDs
      * @return mixed
      */
-    public function GetPlayerSummaries($steamids)
+    public function GetPlayerSummaries($steamids = array())
     {
         $summaries = null;
         foreach (array_chunk($steamids, 100) as $iteration => $chunk) {

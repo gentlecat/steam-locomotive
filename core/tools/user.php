@@ -13,6 +13,7 @@ class User extends Tool
      * @param int $community_id User's community ID
      * @return null|string Returns HTML with badges on success or NULL if badges weren't found
      * @throws WrongIDException
+     * @deprecated Use official API to get badges.
      */
     public function getBadges($community_id)
     {

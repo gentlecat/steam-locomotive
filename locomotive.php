@@ -56,9 +56,10 @@ class LocomotiveTools
     public function __construct()
     {
         // Defining tools
-        $this->app = new \Locomotive\Tools\App();
+        $this->store = new \Locomotive\Tools\Store();
         $this->dota = new \Locomotive\Tools\Dota();
         $this->user = new \Locomotive\Tools\User();
+        $this->app = new \Locomotive\Tools\App(); // TODO: Remove (see store tools)
     }
 
 }

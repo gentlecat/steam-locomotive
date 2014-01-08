@@ -1,39 +1,48 @@
 <?php
 namespace Locomotive\Tools;
 
+// TODO: Remove this class (see store tools)
+/**
+ * @deprecated See store tools.
+ */
 class App extends Tool
 {
 
+    function __construct()
+    {
+        $this->store = new Store();
+    }
+
+    /**
+     * @deprecated See store tools.
+     */
     function getAppLogoURL($app_id, $size = 'large')
     {
-        switch ($size) {
-            case 'large':
-                return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header.jpg'; // 460x215
-            case 'medium':
-                return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header_292x136.jpg';
-            case 'small':
-                return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/capsule_184x69.jpg';
-        }
+        return $this->store->getAppLogoURL($app_id, $size);
     }
 
-    function getAppDetails($appids, $cc = 'US', $language = 'english')
+    /**
+     * @deprecated See store tools.
+     */
+    function getAppDetails($appids = array(), $cc = 'US', $language = 'english')
     {
-        $url = 'http://store.steampowered.com/api/appdetails/?l='
-            . $language . '&cc=' . $cc . '&appids=' . implode(",", $appids);
-        return json_decode(parent::getContent($url));
+        return $this->store->getAppDetails($appids, $cc, $language);
     }
 
+    /**
+     * @deprecated See store tools.
+     */
     function getFeaturedApps($cc = 'US', $language = 'english')
     {
-        $url = 'http://store.steampowered.com/api/featured/?l=' . $language . '&cc=' . $cc;
-        return json_decode(parent::getContent($url));
+        return $this->store->getFeatured($cc, $language);
     }
 
+    /**
+     * @deprecated See store tools.
+     */
     function getFeaturedCategories($cc = 'US', $language = 'english')
     {
-        $url = 'http://store.steampowered.com/api/featuredcategories/?l=' . $language . '&cc=' . $cc;
-        return json_decode(parent::getContent($url));
+        return $this->store->getFeaturedCategories($cc, $language);
     }
-
 
 }
