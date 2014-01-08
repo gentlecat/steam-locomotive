@@ -5,9 +5,10 @@ class Dota extends Tool
 {
 
 
-    function getHeroPickerData()
+    function getHeroPickerData($language = 'english')
     {
-        return json_decode(parent::getContent("http://www.dota2.com/jsfeed/heropickerdata"));
+        $url = "http://www.dota2.com/jsfeed/abilitydata/?l=" . $language;
+        return json_decode(parent::getContent($url));
     }
 
     function getHeroIconURL($hero_name)
@@ -15,9 +16,10 @@ class Dota extends Tool
         return 'http://media.steampowered.com/apps/dota2/images/heroes/' . $hero_name . '_sb.png';
     }
 
-    function getItemData()
+    function getItemData($language = 'english')
     {
-        return json_decode(parent::getContent("http://www.dota2.com/jsfeed/itemdata"));
+        $url = "http://www.dota2.com/jsfeed/itemdata/?l=" . $language;
+        return json_decode(parent::getContent($url));
     }
 
     function getItemIconURL($item_name)
@@ -25,9 +27,10 @@ class Dota extends Tool
         return 'http://media.steampowered.com/apps/dota2/images/items/' . $item_name . '_lg.png';
     }
 
-    function getAbilityData()
+    function getAbilityData($language = 'english')
     {
-        return json_decode(parent::getContent("http://www.dota2.com/jsfeed/abilitydata"));
+        $url = "http://www.dota2.com/jsfeed/abilitydata/?l=" . $language;
+        return json_decode(parent::getContent($url));
     }
 
     function getUniqueUsers()
