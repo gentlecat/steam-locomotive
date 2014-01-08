@@ -41,7 +41,7 @@ All you need to do is define the following requirement in your composer.json fil
 
 ## License
 
-    Copyright 2013 Roman Tsukanov
+    Copyright 2014 Roman Tsukanov
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
