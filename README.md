@@ -1,4 +1,4 @@
-# Steam Locomotive
+# Steam Locomotive [![Build Status](https://api.travis-ci.org/tsukanov/steam-locomotive.png)](https://travis-ci.org/tsukanov/steam-locomotive)
 Steam Locomotive is a PHP wrapper for Steam Web API with useful tools such as Steam ID converters, validators, etc.
 
 Please, feel free to contribute! You can add missing interface, fix function
