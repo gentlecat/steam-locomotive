@@ -8,3 +8,6 @@ php:
 install:
   - composer self-update
   - composer install
+
+script:
+  - phpunit test
