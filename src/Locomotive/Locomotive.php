@@ -32,7 +32,7 @@ class Locomotive
      */
     function __construct($api_key)
     {
-        $GLOBALS['api_key'] = $api_key;
+        $GLOBALS['LOCOMOTIVE_API_KEY'] = $api_key;
 
         // Defining interfaces
         $this->IDOTA2Match_570 = new Interfaces\IDOTA2Match_570();

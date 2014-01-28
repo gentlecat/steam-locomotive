@@ -12,7 +12,7 @@ class WebInterface
     public function get($interface, $method, $version, $parameters = array())
     {
         $path = '/' . $interface . '/' . $method . '/v' . $version . '/';
-        $query = '?key=' . $GLOBALS['api_key'] . self::parseParameters($parameters);
+        $query = '?key=' . $GLOBALS['LOCOMOTIVE_API_KEY'] . self::parseParameters($parameters);
 
         $client = new Client(PROTOCOL . '://' . WEB_API_HOSTNAME);
         $request = $client->get($path . $query);

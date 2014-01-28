@@ -10,7 +10,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
 
     public function testAPIKey()
     {
-        $this->assertEquals($this->api_key, $GLOBALS['api_key']);
+        $this->assertEquals($this->api_key, $GLOBALS['LOCOMOTIVE_API_KEY']);
     }
 
     /**
