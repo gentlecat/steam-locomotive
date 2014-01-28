@@ -3,8 +3,6 @@ namespace Locomotive\Tests;
 
 use Locomotive\Locomotive;
 
-require dirname(__FILE__) . '/init.php';
-
 class MainTest extends \PHPUnit_Framework_TestCase
 {
     protected $api_key;

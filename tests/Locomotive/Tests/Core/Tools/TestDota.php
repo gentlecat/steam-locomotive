@@ -3,9 +3,7 @@ namespace Locomotive\Tests\Core\Tools;
 
 use Locomotive\Core\Tools\Dota;
 
-require dirname(__FILE__) . '/../../init.php';
-
-class DotaTest extends \PHPUnit_Framework_TestCase
+class TestDota extends \PHPUnit_Framework_TestCase
 {
 
     public function testGetHeroIconURL()

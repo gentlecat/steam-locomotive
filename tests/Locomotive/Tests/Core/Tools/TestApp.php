@@ -3,9 +3,7 @@ namespace Locomotive\Tests\Core\Tools;
 
 use Locomotive\Core\Tools\App;
 
-require dirname(__FILE__) . '/../../init.php';
-
-class AppTest extends \PHPUnit_Framework_TestCase
+class TestApp extends \PHPUnit_Framework_TestCase
 {
 
     public function testGetAppLogoURL()
