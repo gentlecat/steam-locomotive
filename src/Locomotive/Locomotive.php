@@ -5,18 +5,18 @@ use Locomotive\Core\Interfaces;
 use Locomotive\Core\Tools;
 
 define('LOCOMOTIVE_PATH', dirname(__FILE__) . '/');
-define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'core/');
+define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'Core/');
 
 // Importing interfaces
 require LOCOMOTIVE_CORE_PATH . 'WebInterface.php';
-define('LOCOMOTIVE_INTERFACES_PATH', LOCOMOTIVE_CORE_PATH . 'interfaces/');
+define('LOCOMOTIVE_INTERFACES_PATH', LOCOMOTIVE_CORE_PATH . 'Interfaces/');
 foreach (glob(LOCOMOTIVE_INTERFACES_PATH . '*.php') as $filename) {
     require $filename;
 }
 
 // Importing tools
 require LOCOMOTIVE_CORE_PATH . 'Tool.php';
-define('LOCOMOTIVE_TOOLS_PATH', LOCOMOTIVE_CORE_PATH . 'tools/');
+define('LOCOMOTIVE_TOOLS_PATH', LOCOMOTIVE_CORE_PATH . 'Tools/');
 foreach (glob(LOCOMOTIVE_TOOLS_PATH . '*.php') as $filename) {
     require $filename;
 }
