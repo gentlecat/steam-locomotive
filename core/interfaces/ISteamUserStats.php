@@ -1,5 +1,7 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core\Interfaces;
+
+use Locomotive\Core\WebInterface;
 
 class ISteamUserStats extends WebInterface
 {
@@ -12,7 +14,7 @@ class ISteamUserStats extends WebInterface
         $params = array(
             'gameid' => $gameid
         );
-        return self::get(getClassName($this), __FUNCTION__, 2, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 2, $params);
     }
 
     /**
@@ -24,7 +26,7 @@ class ISteamUserStats extends WebInterface
         $params = array(
             'appid' => $appid
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -44,7 +46,7 @@ class ISteamUserStats extends WebInterface
             'startdate' => $startdate,
             'enddate' => $enddate
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -58,7 +60,7 @@ class ISteamUserStats extends WebInterface
             'appid' => $appid,
             'l' => $l
         );
-        return self::get(getClassName($this), __FUNCTION__, 2, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 2, $params);
     }
 
     /**
@@ -72,7 +74,7 @@ class ISteamUserStats extends WebInterface
             'appid' => $appid,
             'steamid' => $steamid
         );
-        return self::get(getClassName($this), __FUNCTION__, 2, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 2, $params);
     }
 
     /**
@@ -88,7 +90,7 @@ class ISteamUserStats extends WebInterface
             'appid' => $appid,
             'l' => $l
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
 

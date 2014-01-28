@@ -1,5 +1,7 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core\Interfaces;
+
+use Locomotive\Core\WebInterface;
 
 class ISteamUser extends WebInterface
 {
@@ -15,7 +17,7 @@ class ISteamUser extends WebInterface
             'steamID' => $steamID,
             'relationship' => $relationship
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -29,7 +31,7 @@ class ISteamUser extends WebInterface
             $params = array(
                 'steamids' => implode(",", $chunk)
             );
-            $response = self::get(getClassName($this), __FUNCTION__, 1, $params);
+            $response = self::get(self::getClassName($this), __FUNCTION__, 1, $params);
             if ($iteration === 0) {
                 $bans = $response;
             } else {
@@ -51,7 +53,7 @@ class ISteamUser extends WebInterface
         $params = array(
             'steamid' => $steamid
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function ResolveVanityURL($vanityurl)

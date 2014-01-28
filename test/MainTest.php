@@ -10,7 +10,7 @@ class MainTest extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         $this->api_key = '3SBF1EF97F8D6E402S4A10BQB704E64C';
-        $this->lib = new Locomotive($this->api_key);
+        $this->lib = new \Locomotive\Locomotive($this->api_key);
     }
 
     public function testAPIKey()

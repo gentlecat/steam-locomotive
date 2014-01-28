@@ -1,9 +1,10 @@
 <?php
-namespace Locomotive\Tools;
+namespace Locomotive\Core\Tools;
+
+use Locomotive\Core\Tool;
 
 class Dota extends Tool
 {
-
 
     function getHeroPickerData($language = 'english')
     {

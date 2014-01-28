@@ -1,12 +1,14 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core\Interfaces;
+
+use Locomotive\Core\WebInterface;
 
 class ISteamApps extends WebInterface
 {
 
     public function GetAppList()
     {
-        return self::get(getClassName($this), __FUNCTION__, 2);
+        return self::get(self::getClassName($this), __FUNCTION__, 2);
     }
 
     /**
@@ -18,7 +20,7 @@ class ISteamApps extends WebInterface
         $params = array(
             'addr' => $addr
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -32,7 +34,7 @@ class ISteamApps extends WebInterface
             'appid' => $appid,
             'version' => $version
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
 }

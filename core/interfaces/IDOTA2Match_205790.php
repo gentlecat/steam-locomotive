@@ -1,5 +1,9 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core\Interfaces;
+
+use Locomotive\Core\WebInterface;
+use Locomotive\Core;
+
 
 class IDOTA2Match_205790 extends WebInterface
 {
@@ -9,7 +13,7 @@ class IDOTA2Match_205790 extends WebInterface
         $params = array(
             'match_id' => $match_id
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetTeamInfoByTeamID($start_at_team_id = NULL, $teams_requested = NULL)
@@ -18,17 +22,17 @@ class IDOTA2Match_205790 extends WebInterface
             'start_at_team_id' => $start_at_team_id,
             'teams_requested' => $teams_requested
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetLiveLeagueGames()
     {
-        return self::get(getClassName($this), __FUNCTION__, 1);
+        return self::get(self::getClassName($this), __FUNCTION__, 1);
     }
 
     public function GetLeagueListing()
     {
-        return self::get(getClassName($this), __FUNCTION__, 1);
+        return self::get(self::getClassName($this), __FUNCTION__, 1);
     }
 
     public function GetMatchHistoryBySequenceNum($start_at_match_seq_num = NULL, $matches_requested = NULL)
@@ -37,7 +41,7 @@ class IDOTA2Match_205790 extends WebInterface
             'start_at_match_seq_num' => $start_at_match_seq_num,
             'matches_requested' => $matches_requested
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetScheduledLeagueGames($date_min = NULL, $date_max = NULL)
@@ -46,7 +50,7 @@ class IDOTA2Match_205790 extends WebInterface
             'date_min' => $date_min,
             'date_max' => $date_max
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetTournamentPlayerStats($account_id,
@@ -62,7 +66,7 @@ class IDOTA2Match_205790 extends WebInterface
             'league_id' => $league_id,
             'time_frame' => $time_frame,
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetMatchHistory($matches_requested = NULL,
@@ -90,7 +94,7 @@ class IDOTA2Match_205790 extends WebInterface
             'min_players' => $min_players,
             'game_mode' => $game_mode,
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
 }

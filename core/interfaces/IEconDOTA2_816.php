@@ -1,12 +1,14 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core\Interfaces;
+
+use Locomotive\Core\WebInterface;
 
 class IEconDOTA2_816 extends WebInterface
 {
 
     public function GetTicketSaleStatus()
     {
-        return self::get(getClassName($this), __FUNCTION__, 1);
+        return self::get(self::getClassName($this), __FUNCTION__, 1);
     }
 
     /**
@@ -20,7 +22,7 @@ class IEconDOTA2_816 extends WebInterface
             'language' => $language,
             'itemizedonly' => $itemizedonly
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -32,7 +34,7 @@ class IEconDOTA2_816 extends WebInterface
         $params = array(
             'language' => $language
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetTournamentPrizePool($language = NULL)
@@ -40,7 +42,7 @@ class IEconDOTA2_816 extends WebInterface
         $params = array(
             'language' => $language
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
 }

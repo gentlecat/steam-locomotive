@@ -1,5 +1,7 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core\Interfaces;
+
+use Locomotive\Core\WebInterface;
 
 class IPlayerService extends WebInterface
 {
@@ -15,7 +17,7 @@ class IPlayerService extends WebInterface
             'steamid' => $steamid,
             'count' => $count
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -36,7 +38,7 @@ class IPlayerService extends WebInterface
             'include_played_free_games' => $include_played_free_games,
             'appids_filter' => $appids_filter
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetSteamLevel($steamid)
@@ -44,7 +46,7 @@ class IPlayerService extends WebInterface
         $params = array(
             'steamid' => $steamid
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetBadges($steamid)
@@ -52,7 +54,7 @@ class IPlayerService extends WebInterface
         $params = array(
             'steamid' => $steamid
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function GetCommunityBadgeProgress($steamid, $badgeid)
@@ -61,7 +63,7 @@ class IPlayerService extends WebInterface
             'steamid' => $steamid,
             'badgeid' => $badgeid
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     public function IsPlayingSharedGame($steamid, $appid_playing)
@@ -70,7 +72,7 @@ class IPlayerService extends WebInterface
             'steamid' => $steamid,
             'appid_playing' => $appid_playing
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
 }

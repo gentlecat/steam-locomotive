@@ -1,6 +1,6 @@
 <?php
 
-use Locomotive\Tools\App;
+use Locomotive\Core\Tools\App;
 
 require dirname(__FILE__) . '/../../init.php';
 

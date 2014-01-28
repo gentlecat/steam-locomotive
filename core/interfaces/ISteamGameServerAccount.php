@@ -1,5 +1,7 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core\Interfaces;
+
+use Locomotive\Core\WebInterface;
 
 class ISteamGameServerAccount extends WebInterface
 {
@@ -13,7 +15,7 @@ class ISteamGameServerAccount extends WebInterface
         $params = array(
             'steamID' => $steamID
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Locomotive\Tools\Dota;
+use Locomotive\Core\Tools\Dota;
 
 require dirname(__FILE__) . '/../../init.php';
 

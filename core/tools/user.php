@@ -1,5 +1,7 @@
 <?php
-namespace Locomotive\Tools;
+namespace Locomotive\Core\Tools;
+
+use Locomotive\Core\Tool;
 
 define('USER_ID_TYPE_COMMUNITY', 'communityid');
 define('USER_ID_TYPE_STEAM', 'steamid');
@@ -38,7 +40,7 @@ class User extends Tool
             case USER_ID_TYPE_COMMUNITY:
                 return $id;
             case USER_ID_TYPE_VANITY:
-                $api_interface = new \Locomotive\WebInterfaces\ISteamUser();
+                $api_interface = new \Locomotive\Core\Interfaces\ISteamUser();
                 return $api_interface->ResolveVanityURL($id);
             case USER_ID_TYPE_STEAM:
                 return self::steamIdToCommunityId($id);

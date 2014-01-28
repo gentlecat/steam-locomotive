@@ -1,5 +1,7 @@
 <?php
-namespace Locomotive\Tools;
+namespace Locomotive\Core\Tools;
+
+use Locomotive\Core\Tool;
 
 class Store extends Tool
 {

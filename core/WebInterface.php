@@ -1,5 +1,5 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core;
 
 use Guzzle\Http\Client;
 
@@ -36,16 +36,16 @@ class WebInterface
         return $result;
     }
 
-}
-
-function getClassName($object)
-{
-    $class = get_class($object);
-    $namespace_end = strrpos($class, '\\');
-    if ($namespace_end) {
-        // Removing namespace
-        return $name = substr($class, $namespace_end + 1);
-    } else {
-        return $class;
+    function getClassName($object)
+    {
+        $class = get_class($object);
+        $namespace_end = strrpos($class, '\\');
+        if ($namespace_end) {
+            // Removing namespace
+            return $name = substr($class, $namespace_end + 1);
+        } else {
+            return $class;
+        }
     }
+
 }

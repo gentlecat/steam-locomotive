@@ -1,5 +1,5 @@
 <?php
-namespace Locomotive\Tools;
+namespace Locomotive\Core;
 
 use Guzzle\Http\Client;
 

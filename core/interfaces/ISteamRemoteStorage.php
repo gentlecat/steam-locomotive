@@ -1,5 +1,7 @@
 <?php
-namespace Locomotive\WebInterfaces;
+namespace Locomotive\Core\Interfaces;
+
+use Locomotive\Core\WebInterface;
 
 class ISteamRemoteStorage extends WebInterface
 {
@@ -17,7 +19,7 @@ class ISteamRemoteStorage extends WebInterface
             'ugcid' => $ugcid,
             'appid' => $appid
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -31,7 +33,7 @@ class ISteamRemoteStorage extends WebInterface
             'collectioncount' => $collectioncount,
             'publishedfileids' => $publishedfileids
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -45,6 +47,6 @@ class ISteamRemoteStorage extends WebInterface
             'itemcount' => $itemcount,
             'publishedfileids' => $publishedfileids
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 }

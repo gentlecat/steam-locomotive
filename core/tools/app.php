@@ -1,7 +1,8 @@
 <?php
-namespace Locomotive\Tools;
+namespace Locomotive\Core\Tools;
 
-// TODO: Remove this class (see store tools)
+use Locomotive\Core\Tool;
+
 /**
  * @deprecated See store tools.
  */
