@@ -12,7 +12,6 @@
             "homepage": "http://tsukanov.me/"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.3",
         "guzzle/guzzle": "v3.8.0",
@@ -23,8 +22,10 @@
     },
     "autoload": {
         "psr-0": {
-            "Locomotive": "src/",
-            "Locomotive\\Tests": "tests/"
+            "Tsukanov\\SteamLocomotive": "src/" ,
+            "Tsukanov\\SteamLocomotive\\Tests": "tests/"
+
         }
-    }
+    },
+    "minimum-stability": "dev"
 }
