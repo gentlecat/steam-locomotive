@@ -21,6 +21,7 @@ In most cases functions return JSON that is decoded using [`json_decode`](http:/
 
 ## Usage example
 
+    use Tsukanov\SteamLocomotive\Locomotive;
     $steam = new Locomotive(YOUR_STEAM_API_KEY);
 	
 	// Getting information about heroes in Dota 2

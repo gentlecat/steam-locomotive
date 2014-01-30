@@ -8,6 +8,8 @@ Desktop.ini
 *.ipr
 *.iws
 .idea/
-vendor
-composer.lock
+phpunit.xml
 composer.phar
+composer.lock
+composer-test.lock
+vendor/
