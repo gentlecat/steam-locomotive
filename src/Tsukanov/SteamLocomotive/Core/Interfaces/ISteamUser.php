@@ -61,7 +61,7 @@ class ISteamUser extends WebInterface
         $params = array(
             'vanityurl' => $vanityurl
         );
-        return self::get(getClassName($this), __FUNCTION__, 1, $params);
+        return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
     /**
@@ -75,7 +75,7 @@ class ISteamUser extends WebInterface
             $params = array(
                 'steamids' => implode(",", $chunk)
             );
-            $response = self::get(getClassName($this), __FUNCTION__, 2, $params);
+            $response = self::get(self::getClassName($this), __FUNCTION__, 2, $params);
             if ($iteration === 0) {
                 $summaries = $response;
             } else {
