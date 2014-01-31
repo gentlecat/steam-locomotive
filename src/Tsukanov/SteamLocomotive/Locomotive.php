@@ -63,7 +63,6 @@ class LocomotiveTools
         $this->store = new Tools\Store();
         $this->dota = new Tools\Dota();
         $this->user = new Tools\User();
-        $this->app = new Tools\App(); // TODO: Remove (see store tools)
     }
 
 }
