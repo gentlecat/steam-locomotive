@@ -1,4 +1,4 @@
-# Steam Locomotive [![Build Status](https://api.travis-ci.org/tsukanov/steam-locomotive.png)](https://travis-ci.org/tsukanov/steam-locomotive) [![Latest Stable Version](https://poser.pugx.org/tsukanov/steam-locomotive/v/stable.png)](https://packagist.org/packages/tsukanov/steam-locomotive) [![Latest Unstable Version](https://poser.pugx.org/tsukanov/steam-locomotive/v/unstable.png)](https://packagist.org/packages/tsukanov/steam-locomotive) [![Monthly Downloads](https://poser.pugx.org/tsukanov/steam-locomotive/d/monthly.png)](https://packagist.org/packages/tsukanov/steam-locomotive)
+# Steam Locomotive [![Build Status](https://api.travis-ci.org/tsukanov/steam-locomotive.png)](https://travis-ci.org/tsukanov/steam-locomotive) [![Latest Stable Version](https://poser.pugx.org/tsukanov/steam-locomotive/v/stable.png)](https://packagist.org/packages/tsukanov/steam-locomotive) [![Latest Unstable Version](https://poser.pugx.org/tsukanov/steam-locomotive/v/unstable.png)](https://packagist.org/packages/tsukanov/steam-locomotive)
 
 Steam Locomotive is a PHP wrapper for Steam Web API with useful tools such as Steam ID converters, validators, etc.
 
