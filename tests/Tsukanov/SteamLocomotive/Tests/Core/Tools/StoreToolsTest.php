@@ -5,54 +5,48 @@ use Tsukanov\SteamLocomotive\Core\Tools\Store;
 
 class StoreToolsTest extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @var Store
+     */
+    protected $store_tools;
     protected $appids = array(10, 50);
     protected $packageids = array(4116);
 
+    protected function setUp()
+    {
+        $this->store_tools = new Store();
+    }
     public function testGetAppLogoURL()
     {
-        $store_tools = new Store();
-
         $app_id = $this->appids[0];
-        $this->assertEquals('http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header.jpg', $store_tools->getAppLogoURL($app_id));
+        $this->assertEquals('http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header.jpg',  $this->store_tools->getAppLogoURL($app_id));
 
         $app_id = $this->appids[1];
-        $this->assertEquals('http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header.jpg', $store_tools->getAppLogoURL($app_id));
+        $this->assertEquals('http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header.jpg',  $this->store_tools->getAppLogoURL($app_id));
     }
 
     function testGetAppDetails()
-    {
-        $store_tools = new Store();
-        $store_tools->getAppDetails();
+    { $this->store_tools->getAppDetails();
     }
 
     function testGetAppUserDetails()
-    {
-        $store_tools = new Store();
-        $store_tools->getAppUserDetails($this->appids);
+    { $this->store_tools->getAppUserDetails($this->appids);
     }
 
     function testGetPackageDetails()
-    {
-        $store_tools = new Store();
-        $store_tools->getPackageDetails($this->packageids);
+    { $this->store_tools->getPackageDetails($this->packageids);
     }
 
     function testGetFeatured()
-    {
-        $store_tools = new Store();
-        $store_tools->getFeatured();
+    { $this->store_tools->getFeatured();
     }
 
     function testGetFeaturedCategories()
-    {
-        $store_tools = new Store();
-        $store_tools->getFeaturedCategories();
+    { $this->store_tools->getFeaturedCategories();
     }
 
     function testGetSalePage()
-    {
-        $store_tools = new Store();
-        $store_tools->getSalePage(0);
+    { $this->store_tools->getSalePage(0);
     }
 
 }

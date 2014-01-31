@@ -5,8 +5,17 @@ use Tsukanov\SteamLocomotive\Locomotive;
 
 class MainTest extends \PHPUnit_Framework_TestCase
 {
-    protected $api_key;
+    /**
+     * @var Locomotive
+     */
     protected $lib;
+    protected $api_key;
+
+    protected function setUp()
+    {
+        $this->api_key = 'poop';
+        $this->lib = new Locomotive($this->api_key);
+    }
 
     public function testAPIKey()
     {
@@ -23,12 +32,6 @@ class MainTest extends \PHPUnit_Framework_TestCase
             $filename = substr($file, 0, -4);
             $this->assertTrue(isset($this->lib->$filename));
         }
-    }
-
-    protected function setUp()
-    {
-        $this->api_key = '3SBF1EF97F8D6E402S4A10BQB704E64C';
-        $this->lib = new Locomotive($this->api_key);
     }
 
 }
