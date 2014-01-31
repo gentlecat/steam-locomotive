@@ -77,14 +77,16 @@ class User extends Tool
     public function steamIdToCommunityId($steam_id)
     {
         $x = NULL;
+        $y = NULL;
         if (preg_match('/(?i:STEAM)_0:[0-9]:[0-9]*/', $steam_id)) {
             $x = substr($steam_id, 8, 1);
+            $y = substr($steam_id, 10);
         } elseif (preg_match('/0:[0-9]:[0-9]*/', $steam_id)) {
             $x = substr($steam_id, 2, 1);
+            $y = substr($steam_id, 4);
         } else {
             throw new WrongIDException($steam_id);
         }
-        $y = substr($steam_id, 4);
         return ($y * 2) + $x + 76561197960265728;
     }
 
