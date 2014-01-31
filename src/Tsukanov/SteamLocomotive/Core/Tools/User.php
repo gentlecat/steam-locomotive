@@ -1,6 +1,7 @@
 <?php
 namespace Tsukanov\SteamLocomotive\Core\Tools;
 
+use Tsukanov\SteamLocomotive\Core\Interfaces\ISteamUser;
 use Tsukanov\SteamLocomotive\Core\Tool;
 
 define('USER_ID_TYPE_COMMUNITY', 'communityid');
@@ -21,7 +22,7 @@ class User extends Tool
             case USER_ID_TYPE_COMMUNITY:
                 return $id;
             case USER_ID_TYPE_VANITY:
-                $api_interface = new \SteamLocomotive\Core\Interfaces\ISteamUser();
+                $api_interface = new ISteamUser();
                 return $api_interface->ResolveVanityURL($id);
             case USER_ID_TYPE_STEAM:
                 return self::steamIdToCommunityId($id);
