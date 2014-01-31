@@ -10,13 +10,13 @@
 
     <testsuites>
         <testsuite name="Steam Locomotive">
-            <directory>./tests/Locomotive/Tests/</directory>
+            <directory>./tests/Tsukanov/SteamLocomotive/Tests/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/Locomotive</directory>
+            <directory suffix=".php">./src/Tsukanov/SteamLocomotive</directory>
             <exclude>
                 <directory>./tests</directory>
                 <directory>./vendor</directory>
