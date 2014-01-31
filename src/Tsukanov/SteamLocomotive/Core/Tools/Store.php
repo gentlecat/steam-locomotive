@@ -18,6 +18,21 @@ class Store extends Tool
         }
     }
 
+    /**
+     * Returns URL of store page background image.
+     * @param $app_id
+     * @return string
+     */
+    function getAppPageBgURL($app_id)
+    {
+        return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/page.bg.jpg';
+    }
+
+    function getAppPageBgGenURL($app_id)
+    {
+        return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/page_bg_generated.jpg';
+    }
+
     function getAppDetails($appids = array(), $cc = 'US', $language = 'english')
     {
         $url = 'http://store.steampowered.com/api/appdetails/?l='
