@@ -11,25 +11,6 @@ class User extends Tool
 {
 
     /**
-     * Get HTML code with badges (images)
-     * @param int $community_id User's community ID
-     * @return null|string Returns HTML with badges on success or NULL if badges weren't found
-     * @throws WrongIDException
-     * @deprecated Use official API to get badges.
-     */
-    public function getBadges($community_id)
-    {
-        $url = 'http://steamcommunity.com/profiles/' . $community_id;
-        $profile_page_html = file_get_html($url);
-        $badges_html = '';
-        foreach ($profile_page_html->find('img.profile_badge_icon') as $element) {
-            $badges_html .= $element;
-        }
-        if (empty($badges_html)) return NULL;
-        return $badges_html;
-    }
-
-    /**
      * Converts User ID into Community ID
      * @param mixed $id User ID
      * @return bool|null|string Returns Community ID or FALSE if supplied ID cannot be converted
