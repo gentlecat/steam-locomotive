@@ -1,4 +1,7 @@
-# Steam Locomotive [![Build Status](https://api.travis-ci.org/tsukanov/steam-locomotive.png)](https://travis-ci.org/tsukanov/steam-locomotive) [![Latest Stable Version](https://poser.pugx.org/tsukanov/steam-locomotive/v/stable.png)](https://packagist.org/packages/tsukanov/steam-locomotive) [![Latest Unstable Version](https://poser.pugx.org/tsukanov/steam-locomotive/v/unstable.png)](https://packagist.org/packages/tsukanov/steam-locomotive)
+# Steam Locomotive
+[![Build Status](https://api.travis-ci.org/tsukanov/steam-locomotive.png)](https://travis-ci.org/tsukanov/steam-locomotive)
+[![Latest Stable Version](https://poser.pugx.org/tsukanov/steam-locomotive/v/stable.png)](https://packagist.org/packages/tsukanov/steam-locomotive)
+[![Latest Unstable Version](https://poser.pugx.org/tsukanov/steam-locomotive/v/unstable.png)](https://packagist.org/packages/tsukanov/steam-locomotive)
 
 Steam Locomotive is a PHP wrapper for Steam Web API with useful tools such as Steam ID converters, validators, etc.
 
@@ -37,7 +40,7 @@ All you need to do is define the following requirement in your composer.json fil
 
     {
         "require": {
-            "tsukanov/steam-locomotive": "v0.2.1"
+            "tsukanov/steam-locomotive": "0.3.0"
         }
     }
 

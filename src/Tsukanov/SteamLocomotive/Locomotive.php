@@ -35,6 +35,7 @@ class Locomotive
         $GLOBALS['LOCOMOTIVE_API_KEY'] = $api_key;
 
         // Defining interfaces
+        $this->ICSGOServers_730 = new Interfaces\ICSGOServers_730();
         $this->IDOTA2Match_570 = new Interfaces\IDOTA2Match_570();
         $this->IDOTA2Match_816 = new Interfaces\IDOTA2Match_816();
         $this->IDOTA2Match_205790 = new Interfaces\IDOTA2Match_205790();
