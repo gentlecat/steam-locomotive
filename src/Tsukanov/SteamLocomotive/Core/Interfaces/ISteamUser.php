@@ -56,10 +56,15 @@ class ISteamUser extends WebInterface
         return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
 
-    public function ResolveVanityURL($vanityurl)
+    /**
+     * @param $vanityurl The vanity URL to get a SteamID for
+     * @param null $url_type The type of vanity URL. 1 (default): Individual profile, 2: Group, 3: Official game group
+     */
+    public function ResolveVanityURL($vanityurl, $url_type = NULL)
     {
         $params = array(
-            'vanityurl' => $vanityurl
+            'vanityurl' => $vanityurl,
+            'url_type' => $url_type
         );
         return self::get(self::getClassName($this), __FUNCTION__, 1, $params);
     }
