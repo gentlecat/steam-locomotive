@@ -4,7 +4,7 @@
     "description": "PHP wrapper for Steam Web API with some useful tools",
     "license": "Apache-2.0",
     "homepage": "https://github.com/Tsukanov/steam-locomotive/",
-    "keywords": ["steam", "valve"],
+    "keywords": ["steam", "valve", "dota", "tf2"],
     "authors": [
         {
             "name": "Roman Tsukanov",
