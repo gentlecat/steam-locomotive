@@ -14,7 +14,6 @@ class IEconDOTA2_816 extends WebInterface
     /**
      * @param $language string The language to provide hero names in.
      * @param $itemizedonly bool Return a list of itemized heroes only.
-     * @return mixed
      */
     public function GetHeroes($language = NULL, $itemizedonly = NULL)
     {

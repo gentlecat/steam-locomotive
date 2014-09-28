@@ -9,7 +9,6 @@ class ISteamUser extends WebInterface
     /**
      * @param $steamID uint64 SteamID of user
      * @param string $relationship relationship type (ex: friend)
-     * @return mixed
      */
     public function GetFriendList($steamID, $relationship = NULL)
     {
@@ -22,7 +21,6 @@ class ISteamUser extends WebInterface
 
     /**
      * @param $steamids  Array of steamIDs
-     * @return mixed
      */
     public function GetPlayerBans($steamids = array())
     {
@@ -46,7 +44,6 @@ class ISteamUser extends WebInterface
 
     /**
      * @param $steamid unit64 SteamID of user
-     * @return mixed
      */
     public function GetUserGroupList($steamid)
     {
@@ -71,7 +68,6 @@ class ISteamUser extends WebInterface
 
     /**
      * @param $steamids Array of steamIDs
-     * @return mixed
      */
     public function GetPlayerSummaries($steamids = array())
     {

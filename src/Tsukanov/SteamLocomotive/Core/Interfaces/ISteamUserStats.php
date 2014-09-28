@@ -7,7 +7,6 @@ class ISteamUserStats extends WebInterface
 {
     /**
      * @param unit64 $gameid GameID to retrieve the achievement percentages for
-     * @return mixed
      */
     public function GetGlobalAchievementPercentagesForApp($gameid)
     {
@@ -19,7 +18,6 @@ class ISteamUserStats extends WebInterface
 
     /**
      * @param unit32 $appid AppID that we're getting user count for
-     * @return mixed
      */
     public function GetNumberOfCurrentPlayers($appid)
     {
@@ -35,7 +33,6 @@ class ISteamUserStats extends WebInterface
      * @param string $name Names of stat to get data for
      * @param unit32 $startdate Start date for daily totals (unix epoch timestamp)
      * @param unit32 $enddate End date for daily totals (unix epoch timestamp)
-     * @return mixed
      */
     public function GetGlobalStatsForGame($appid, $count, $name, $startdate = NULL, $enddate = NULL)
     {
@@ -52,7 +49,6 @@ class ISteamUserStats extends WebInterface
     /**
      * @param unit32 $appid appid of game
      * @param string $l localized language to return (english, french, etc.)
-     * @return mixed
      */
     public function GetSchemaForGame($appid, $l = NULL)
     {
@@ -66,7 +62,6 @@ class ISteamUserStats extends WebInterface
     /**
      * @param unit32 $appid appid of game
      * @param unit64 $steamid SteamID of user
-     * @return mixed
      */
     public function GetUserStatsForGame($appid, $steamid)
     {
@@ -81,7 +76,6 @@ class ISteamUserStats extends WebInterface
      * @param unit32 $steamid SteamID of user
      * @param unit32 $appid AppID to get achievements for
      * @param string $language Language to return strings for
-     * @return mixed
      */
     public function GetPlayerAchievements($steamid, $appid, $l = NULL)
     {
