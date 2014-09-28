@@ -1,7 +1,7 @@
 <?php
 namespace Tsukanov\SteamLocomotive\Core;
 
-use Guzzle\Http\Client;
+use GuzzleHttp\Client;
 
 define('WEB_API_HOSTNAME', 'api.steampowered.com');
 define('PROTOCOL', 'https');
@@ -16,9 +16,8 @@ class WebInterface
             $url .= 'key=' . $GLOBALS['LOCOMOTIVE_API_KEY'];
         }
 
-        $client = new Client(PROTOCOL . '://' . WEB_API_HOSTNAME);
-        $request = $client->get($url . self::parseParameters($parameters));
-        $response = $request->send();
+        $client = new Client();
+        $response = $client->get(PROTOCOL . '://' . WEB_API_HOSTNAME . $url . self::parseParameters($parameters));
 
         if ($response->getStatusCode() == 200) {
             return json_decode($response->getBody(true));
