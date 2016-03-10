@@ -1,5 +1,5 @@
 # Steam Locomotive
-[![Build Status](https://img.shields.io/travis/tsukanov/steam-locomotive.svg)](https://travis-ci.org/tsukanov/steam-locomotive)
+[![Build Status](https://img.shields.io/travis/gentlecat/steam-locomotive.svg)](https://travis-ci.org/gentlecat/steam-locomotive)
 [![Latest Stable Version](https://img.shields.io/packagist/v/tsukanov/steam-locomotive.svg)](https://packagist.org/packages/tsukanov/steam-locomotive)
 
 Steam Locomotive is a PHP wrapper for Steam Web API with useful tools such as Steam ID converters, validators, etc.
