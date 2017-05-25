@@ -10,11 +10,11 @@ class Store extends Tool
     {
         switch ($size) {
             case 'large':
-                return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header.jpg'; // 460x215
+                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/header.jpg'; // 460x215
             case 'medium':
-                return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/header_292x136.jpg';
+                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/header_292x136.jpg';
             case 'small':
-                return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/capsule_184x69.jpg';
+                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/capsule_184x69.jpg';
         }
     }
 
@@ -25,12 +25,12 @@ class Store extends Tool
      */
     function getAppPageBgURL($app_id)
     {
-        return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/page.bg.jpg';
+        return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/page.bg.jpg';
     }
 
     function getAppPageBgGenURL($app_id)
     {
-        return 'http://cdn.steampowered.com/v/gfx/apps/' . $app_id . '/page_bg_generated.jpg';
+        return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/page_bg_generated.jpg';
     }
 
     function getAppDetails($appids = array(), $cc = 'US', $language = 'english')
