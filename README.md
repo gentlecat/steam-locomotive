@@ -4,8 +4,9 @@
 
 Steam Locomotive is a PHP wrapper for Steam Web API with useful tools such as Steam ID converters, validators, etc.
 
-Please, feel free to contribute! You can add missing interface, fix function
-that is not working properly or do something else. Any improvements are welcome.
+**Please note that this project is no longer actively maintained!** The best way to make a
+change is by submitting a pull request. You can add missing interface, fix function
+that is not working properly or do something else. Any improvements are welcome!
 
 ## How it works
 
