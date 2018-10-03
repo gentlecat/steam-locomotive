@@ -33,17 +33,64 @@ class Store extends Tool
         return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/page_bg_generated.jpg';
     }
 
-    function getAppDetails($appids = array(), $cc = 'US', $language = 'english')
+    /**
+     * @param int $appId
+     * @param string $cc
+     * @param string $language
+     * @return null|\stdClass
+     */
+    function getAppDetails(/* int */ $appId, $cc = 'US', $language = 'english')
     {
-        $url = 'http://store.steampowered.com/api/appdetails/?l='
-            . $language . '&cc=' . $cc . '&appids=' . implode(",", $appids);
-        return json_decode(parent::getContent($url));
+        $url = "http://store.steampowered.com/api/appdetails/?l=$language&cc=$cc&appids=$appId";
+
+        try {
+            $json = $this->getContent($url);
+            $data = json_decode($json);
+            $app = $data->{$appId};
+            if (!$app->success) {
+                return null;
+            }
+            return $app->data;
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            if (!$e->getResponse()) {
+                throw $e;
+            }
+
+            if ((string) $e->getResponse()->getBody() === 'null') {
+                return null;
+            }
+
+            throw $e;
+        }
     }
 
-    function getAppUserDetails($appids = array())
+    /**
+     * @param int $appId
+     * @return null|\stdClass
+     */
+    function getAppUserDetails(/* int */ $appId) /*: array */
     {
-        $url = 'http://store.steampowered.com/api/appdetails/?appids=' . implode(",", $appids);
-        return json_decode(parent::getContent($url));
+        $url = "http://store.steampowered.com/api/appdetails/?appids=$appId";
+
+        try {
+            $json = $this->getContent($url);
+            $data = json_decode($json);
+            $app = $data->{$appId};
+            if (!$app->success) {
+                return null;
+            }
+            return $app->data;
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            if (!$e->getResponse()) {
+                throw $e;
+            }
+
+            if ((string) $e->getResponse()->getBody() === 'null') {
+                return null;
+            }
+
+            throw $e;
+        }
     }
 
     function getPackageDetails($packageids = array())
