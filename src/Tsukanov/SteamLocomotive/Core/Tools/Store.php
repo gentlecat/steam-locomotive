@@ -6,15 +6,15 @@ use Tsukanov\SteamLocomotive\Core\Tool;
 class Store extends Tool
 {
 
-    function getAppLogoURL($app_id, $size = 'large')
+    function getAppLogoURL($appId, $size = 'large')
     {
         switch ($size) {
             case 'large':
-                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/header.jpg'; // 460x215
+                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $appId . '/header.jpg'; // 460x215
             case 'medium':
-                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/header_292x136.jpg';
+                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $appId . '/header_292x136.jpg';
             case 'small':
-                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/capsule_184x69.jpg';
+                return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $appId . '/capsule_184x69.jpg';
         }
     }
 
@@ -33,16 +33,33 @@ class Store extends Tool
         return 'http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/page_bg_generated.jpg';
     }
 
-    function getAppDetails($appids = array(), $cc = 'US', $language = 'english')
+    function getAppDetails($appIds = array(), $cc = 'US', $language = 'english')
     {
-        $url = 'http://store.steampowered.com/api/appdetails/?l='
-            . $language . '&cc=' . $cc . '&appids=' . implode(",", $appids);
+        $url = 'http://store.steampowered.com/api/appdetails/?';
+
+        $parameters = array(
+            'l' => $language,
+            'cc' => $cc,
+            'appids' => implode(",", $appIds),
+            'filters' => 'price_overview'
+        );
+
+        $url .= http_build_query($parameters);
+
         return json_decode(parent::getContent($url));
     }
 
-    function getAppUserDetails($appids = array())
+    function getAppUserDetails($appIds = array())
     {
-        $url = 'http://store.steampowered.com/api/appdetails/?appids=' . implode(",", $appids);
+        $url = 'http://store.steampowered.com/api/appdetails/?';
+
+        $parameters = array(
+            'appids' => implode(",", $appIds),
+            'filters' => 'price_overview'
+        );
+
+        $url .= http_build_query($parameters);
+
         return json_decode(parent::getContent($url));
     }
 
@@ -69,5 +86,4 @@ class Store extends Tool
         $url = 'http://store.steampowered.com/api/salepage/?id=' . $id;
         return json_decode(parent::getContent($url));
     }
-
 }
