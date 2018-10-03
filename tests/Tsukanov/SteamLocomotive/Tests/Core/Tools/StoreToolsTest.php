@@ -25,6 +25,12 @@ class StoreToolsTest extends \PHPUnit_Framework_TestCase
             'http://cdn.akamai.steamstatic.com/steam/apps/' . $appId . '/header.jpg',
             $this->storeTools->getAppLogoURL($appId)
         );
+
+        $appId = $this->appIds[1];
+        $this->assertEquals(
+            'http://cdn.akamai.steamstatic.com/steam/apps/' . $appId . '/header.jpg',
+            $this->storeTools->getAppLogoURL($appId)
+        );
     }
 
     function testGetAppDetails()
