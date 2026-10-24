@@ -1,28 +1,29 @@
 <?php
 namespace Tsukanov\SteamLocomotive\Tests\Core\Interfaces;
 
+use PHPUnit\Framework\TestCase;
 use Tsukanov\SteamLocomotive\Locomotive;
 
-class ISteamWebAPIUtilTest extends \PHPUnit_Framework_TestCase
+class ISteamWebAPIUtilTest extends TestCase
 {
     /**
      * @var Locomotive
      */
     protected $lib;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->lib = new Locomotive(null);
     }
 
     public function testApiList()
     {
-        $this->lib->ISteamWebAPIUtil->GetSupportedAPIList();
+        $this->assertIsObject($this->lib->ISteamWebAPIUtil->GetSupportedAPIList());
     }
 
     public function testServerInfo()
     {
-        $this->lib->ISteamWebAPIUtil->GetServerInfo();
+        $this->assertIsObject($this->lib->ISteamWebAPIUtil->GetServerInfo());
     }
 
 }

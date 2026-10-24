@@ -11,30 +11,28 @@ class WebInterface
 
     public function get($interface, $method, $version, $parameters = array())
     {
-        $url = '/' . $interface . '/' . $method . '/v' . $version . '/?';
-        if ($GLOBALS['LOCOMOTIVE_API_KEY'] != null) {
-            $url .= 'key=' . $GLOBALS['LOCOMOTIVE_API_KEY'];
+        $url = PROTOCOL . '://' . WEB_API_HOSTNAME . '/' . $interface . '/' . $method . '/v' . $version . '/';
+
+        $query = array();
+        $api_key = $GLOBALS['LOCOMOTIVE_API_KEY'] ?? null;
+        if ($api_key != null) {
+            $query['key'] = $api_key;
         }
+        $query = array_merge($query, self::parseParameters($parameters));
 
         $client = new Client();
-        $response = $client->get(PROTOCOL . '://' . WEB_API_HOSTNAME . $url . self::parseParameters($parameters));
+        $response = $client->get($url, array('query' => $query));
 
         if ($response->getStatusCode() == 200) {
-            return json_decode($response->getBody(true));
+            return json_decode((string) $response->getBody());
         }
     }
 
     private function parseParameters($parameters = array())
     {
-        $param_keys = array_keys($parameters);
-        $result = '';
-        foreach ($param_keys as $key) {
-            $val = $parameters[$key];
-            if (!is_null($val)) {
-                $result = $result . '&' . $key . '=' . $val;
-            }
-        }
-        return $result;
+        return array_filter($parameters, function ($val) {
+            return !is_null($val);
+        });
     }
 
     function getClassName($object)

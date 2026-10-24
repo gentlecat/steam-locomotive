@@ -1,9 +1,10 @@
 <?php
 namespace Tsukanov\SteamLocomotive\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Tsukanov\SteamLocomotive\Locomotive;
 
-class MainTest extends \PHPUnit_Framework_TestCase
+class MainTest extends TestCase
 {
     /**
      * @var Locomotive
@@ -11,7 +12,7 @@ class MainTest extends \PHPUnit_Framework_TestCase
     protected $lib;
     protected $api_key;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->api_key = 'poop';
         $this->lib = new Locomotive($this->api_key);

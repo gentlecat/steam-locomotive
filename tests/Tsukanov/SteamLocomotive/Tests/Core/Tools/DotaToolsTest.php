@@ -1,16 +1,17 @@
 <?php
 namespace Tsukanov\SteamLocomotive\Tests\Core\Tools;
 
+use PHPUnit\Framework\TestCase;
 use Tsukanov\SteamLocomotive\Core\Tools\Dota;
 
-class DotaToolsTest extends \PHPUnit_Framework_TestCase
+class DotaToolsTest extends TestCase
 {
     /**
      * @var Dota
      */
     protected $dota_tools;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->dota_tools = new Dota();
     }

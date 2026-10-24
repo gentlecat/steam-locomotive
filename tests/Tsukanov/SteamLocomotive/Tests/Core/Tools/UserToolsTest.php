@@ -1,16 +1,17 @@
 <?php
 namespace Tsukanov\SteamLocomotive\Tests\Core\Tools;
 
+use PHPUnit\Framework\TestCase;
 use Tsukanov\SteamLocomotive\Core\Tools\User;
 
-class UserToolsTest extends \PHPUnit_Framework_TestCase
+class UserToolsTest extends TestCase
 {
     /**
      * @var User
      */
     protected $user_tools;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->user_tools = new User();
     }

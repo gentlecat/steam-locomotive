@@ -8,17 +8,17 @@ define('LOCOMOTIVE_PATH', dirname(__FILE__) . '/');
 define('LOCOMOTIVE_CORE_PATH', LOCOMOTIVE_PATH . 'Core/');
 
 // Importing interfaces
-require LOCOMOTIVE_CORE_PATH . 'WebInterface.php';
+require_once LOCOMOTIVE_CORE_PATH . 'WebInterface.php';
 define('LOCOMOTIVE_INTERFACES_PATH', LOCOMOTIVE_CORE_PATH . 'Interfaces/');
 foreach (glob(LOCOMOTIVE_INTERFACES_PATH . '*.php') as $filename) {
-    require $filename;
+    require_once $filename;
 }
 
 // Importing tools
-require LOCOMOTIVE_CORE_PATH . 'Tool.php';
+require_once LOCOMOTIVE_CORE_PATH . 'Tool.php';
 define('LOCOMOTIVE_TOOLS_PATH', LOCOMOTIVE_CORE_PATH . 'Tools/');
 foreach (glob(LOCOMOTIVE_TOOLS_PATH . '*.php') as $filename) {
-    require $filename;
+    require_once $filename;
 }
 
 /**
@@ -26,6 +26,38 @@ foreach (glob(LOCOMOTIVE_TOOLS_PATH . '*.php') as $filename) {
  */
 class Locomotive
 {
+
+    /** @var Interfaces\ICSGOServers_730 */
+    public $ICSGOServers_730;
+    /** @var Interfaces\IDOTA2Match_570 */
+    public $IDOTA2Match_570;
+    /** @var Interfaces\IDOTA2Match_816 */
+    public $IDOTA2Match_816;
+    /** @var Interfaces\IDOTA2Match_205790 */
+    public $IDOTA2Match_205790;
+    /** @var Interfaces\IEconDOTA2_570 */
+    public $IEconDOTA2_570;
+    /** @var Interfaces\IEconDOTA2_816 */
+    public $IEconDOTA2_816;
+    /** @var Interfaces\IEconDOTA2_205790 */
+    public $IEconDOTA2_205790;
+    /** @var Interfaces\IPlayerService */
+    public $IPlayerService;
+    /** @var Interfaces\ISteamApps */
+    public $ISteamApps;
+    /** @var Interfaces\ISteamGameServerAccount */
+    public $ISteamGameServerAccount;
+    /** @var Interfaces\ISteamRemoteStorage */
+    public $ISteamRemoteStorage;
+    /** @var Interfaces\ISteamUser */
+    public $ISteamUser;
+    /** @var Interfaces\ISteamUserStats */
+    public $ISteamUserStats;
+    /** @var Interfaces\ISteamWebAPIUtil */
+    public $ISteamWebAPIUtil;
+
+    /** @var LocomotiveTools */
+    public $tools;
 
     /**
      * @param string $api_key Steam API key from http://steamcommunity.com/dev/apikey/
@@ -57,6 +89,13 @@ class Locomotive
 
 class LocomotiveTools
 {
+
+    /** @var Tools\Store */
+    public $store;
+    /** @var Tools\Dota */
+    public $dota;
+    /** @var Tools\User */
+    public $user;
 
     public function __construct()
     {

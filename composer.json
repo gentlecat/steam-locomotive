@@ -4,7 +4,12 @@
     "description": "PHP wrapper for Steam Web API with some useful tools",
     "license": "Apache-2.0",
     "homepage": "https://github.com/Tsukanov/steam-locomotive/",
-    "keywords": ["steam", "valve", "dota", "tf2"],
+    "keywords": [
+        "steam",
+        "valve",
+        "dota",
+        "tf2"
+    ],
     "authors": [
         {
             "name": "Roman Tsukanov",
@@ -17,19 +22,21 @@
         }
     ],
     "require": {
+        "php": ">=8.3",
         "ext-json": "*",
-        "php": ">=5.4",
-        "guzzlehttp/guzzle": "~4.0"
+        "guzzlehttp/guzzle": "^7.9"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0"
+        "phpunit/phpunit": "^12.5"
     },
     "autoload": {
-        "psr-0": {
-            "Tsukanov\\SteamLocomotive": "src/",
-            "Tsukanov\\SteamLocomotive\\Tests": "tests/"
-
+        "psr-4": {
+            "Tsukanov\\SteamLocomotive\\": "src/Tsukanov/SteamLocomotive/"
         }
     },
-    "minimum-stability": "dev"
+    "autoload-dev": {
+        "psr-4": {
+            "Tsukanov\\SteamLocomotive\\Tests\\": "tests/Tsukanov/SteamLocomotive/Tests/"
+        }
+    }
 }

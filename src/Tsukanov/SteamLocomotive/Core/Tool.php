@@ -6,11 +6,15 @@ use GuzzleHttp\Client;
 class Tool
 {
 
+    /**
+     * @param string $url
+     * @return string Response body
+     */
     public function getContent($url)
     {
         $client = new Client();
         $response = $client->get($url);
-        return $response->getBody(true);
+        return (string) $response->getBody();
     }
 
 }

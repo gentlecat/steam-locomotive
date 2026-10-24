@@ -2,12 +2,15 @@
 namespace Tsukanov\SteamLocomotive\Tests\Core\Tools;
 
 use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Message\Request;
-use GuzzleHttp\Message\Response;
-use GuzzleHttp\Stream\Stream;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 use Tsukanov\SteamLocomotive\Core\Tools\Store;
 
-class StoreToolsTest extends \PHPUnit_Framework_TestCase
+class StoreToolsTest extends TestCase
 {
     /**
      * @var Store
@@ -16,7 +19,7 @@ class StoreToolsTest extends \PHPUnit_Framework_TestCase
     protected $appids = array(10, 50);
     protected $packageids = array(4116);
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->store_tools = new Store();
     }
@@ -29,43 +32,40 @@ class StoreToolsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('http://cdn.akamai.steamstatic.com/steam/apps/' . $app_id . '/header.jpg',  $this->store_tools->getAppLogoURL($app_id));
     }
 
-    /**
-     * @test
-     * @group failing
-     */
+    #[Test]
+    #[Group('failing')]
     function appdetails_will_be_null_if_response_was_not_succesful()
     {
-        /** @var \PHPUnit_Framework_MockObject_MockObject|\Tsukanov\SteamLocomotive\Core\Tools\Store $mockedStoreTools */
-        $mockedStoreTools = $this->getMockBuilder('\Tsukanov\SteamLocomotive\Core\Tools\Store')
-            ->setMethods(['getContent'])
+        /** @var MockObject&Store $mockedStoreTools */
+        $mockedStoreTools = $this->getMockBuilder(Store::class)
+            ->onlyMethods(['getContent'])
             ->getMock();
 
         $mockedStoreTools->expects($this->exactly(2))
             ->method('getContent')
             ->willReturn('{"123": {"success": false}}');
 
-        $this->assertEquals(null, $mockedStoreTools->getAppDetails(123));
-        $this->assertEquals(null, $mockedStoreTools->getAppUserDetails(123));
+        $this->assertNull($mockedStoreTools->getAppDetails(123));
+        $this->assertNull($mockedStoreTools->getAppUserDetails(123));
     }
 
-    /**
-     * @group failing
-     */
+    #[Group('failing')]
     function testGetAppDetails()
     {
-        /** @var \PHPUnit_Framework_MockObject_MockObject|\Tsukanov\SteamLocomotive\Core\Tools\Store $mockedStoreTools */
-        $mockedStoreTools = $this->getMockBuilder('\Tsukanov\SteamLocomotive\Core\Tools\Store')
-            ->setMethods(['getContent'])
+        /** @var MockObject&Store $mockedStoreTools */
+        $mockedStoreTools = $this->getMockBuilder(Store::class)
+            ->onlyMethods(['getContent'])
             ->getMock();
 
         $mockedStoreTools->expects($this->once())
             ->method('getContent')
-            ->willThrowException(ClientException::create(
+            ->willThrowException(new ClientException(
+                'Bad Request',
                 new Request('GET', 'something'),
-                new Response(400, [], Stream::factory('null'))
+                new Response(400, [], 'null')
             ));
 
-        $this->assertEquals(null, $mockedStoreTools->getAppDetails(123));
+        $this->assertNull($mockedStoreTools->getAppDetails(123));
     }
 
     function testGetAppUserDetails()
@@ -76,21 +76,21 @@ class StoreToolsTest extends \PHPUnit_Framework_TestCase
 
     function testGetPackageDetails()
     {
-        $this->store_tools->getPackageDetails($this->packageids);
+        $this->assertIsObject($this->store_tools->getPackageDetails($this->packageids));
     }
 
     function testGetFeatured()
     {
-        $this->store_tools->getFeatured();
+        $this->assertIsObject($this->store_tools->getFeatured());
     }
 
     function testGetFeaturedCategories()
     {
-        $this->store_tools->getFeaturedCategories();
+        $this->assertIsObject($this->store_tools->getFeaturedCategories());
     }
 
     function testGetSalePage()
     {
-        $this->store_tools->getSalePage(0);
+        $this->assertIsObject($this->store_tools->getSalePage(0));
     }
 }

@@ -53,7 +53,7 @@ class User extends Tool
     {
         switch ($expected_type) {
             case USER_ID_TYPE_COMMUNITY:
-                if ((ctype_digit($id) && (strlen($id) == 17)) || (is_numeric($id) && $id > 76561197960265728 )) return TRUE;
+                if (((is_string($id) || is_int($id)) && ctype_digit((string) $id) && (strlen($id) == 17)) || (is_numeric($id) && $id > 76561197960265728 )) return TRUE;
                 else return FALSE;
             case USER_ID_TYPE_STEAM:
                 if (preg_match('/((?i:STEAM)_)?0:[0-9]:[0-9]*/', $id)) return TRUE;
